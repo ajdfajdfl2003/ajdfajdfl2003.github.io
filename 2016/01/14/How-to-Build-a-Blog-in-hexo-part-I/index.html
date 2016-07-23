@@ -1,0 +1,769 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hexo,Quick Start," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="為什麼會想用 Hexo 呢？某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  如何正确地写出单例模式 的部落格，網頁的最下方(footer)看到了一些資訊點進去後才知道原來還可以用 Markdown 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？然而，因為之前有在 Blogger 寫文章，但寫文章的速度沒有像使用 Mar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Build a Blog in Hexo - Quick Start">
+<meta property="og:url" content="http://ajdfajdfl2003.github.io/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/index.html">
+<meta property="og:site_name" content="享受學習的樂趣">
+<meta property="og:description" content="為什麼會想用 Hexo 呢？某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  如何正确地写出单例模式 的部落格，網頁的最下方(footer)看到了一些資訊點進去後才知道原來還可以用 Markdown 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？然而，因為之前有在 Blogger 寫文章，但寫文章的速度沒有像使用 Mar">
+<meta property="og:updated_time" content="2016-01-15T18:17:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Build a Blog in Hexo - Quick Start">
+<meta name="twitter:description" content="為什麼會想用 Hexo 呢？某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  如何正确地写出单例模式 的部落格，網頁的最下方(footer)看到了一些資訊點進去後才知道原來還可以用 Markdown 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？然而，因為之前有在 Blogger 寫文章，但寫文章的速度沒有像使用 Mar">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> How to Build a Blog in Hexo - Quick Start | 享受學習的樂趣 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">享受學習的樂趣</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                How to Build a Blog in Hexo - Quick Start
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2016-01-14T23:48:05+08:00" content="2016-01-14">
+              2016-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Hexo/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!-- ttoc -->
+<p>為什麼會想用 <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> 呢？<br><br>某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  <a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="external">如何正确地写出单例模式</a> 的部落格，網頁的最下方(footer)看到了一些資訊<br><br><br><br><br>點進去後才知道原來還可以用 <a href="http://markdown.tw/" target="_blank" rel="external">Markdown</a> 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？<br><br>然而，因為之前有在 <a href="https://www.blogger.com/home" target="_blank" rel="external">Blogger</a> 寫文章，但寫文章的速度沒有像使用 Markdown 的快速，而且最近都是用 Markdown 在做筆記，<a href="https://atom.io/packages/ever-notedown" target="_blank" rel="external">完成後先將筆記放在 Evernote</a>，若將來要分享在 Blog 上也可以很迅速的 Copy &amp; Past，二來可以也不用擔心格式不一樣。</p>
+<a id="more"></a>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><blockquote>
+<p><strong>Notice!</strong> This article is for <code>Mac OS X</code> and <code>Hexo 3.x</code>.</p>
+</blockquote>
+<h3 id="Install-Git"><a href="#Install-Git" class="headerlink" title="Install Git"></a>Install Git</h3><p>根據<a href="https://hexo.io/zh-tw/docs/index.html#u5B89_u88DD_Git" target="_blank" rel="external">官方文件 - 安裝 Git</a> 所述：</p>
+<blockquote>
+<p>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="external">Homebrew</a>, <a href="http://www.macports.org/" target="_blank" rel="external">MacPorts</a> 或 <a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="external">安裝程式</a> 安裝。</p>
+</blockquote>
+<ul>
+<li>我是習慣用 <a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a> 來安裝套件</li>
+<li>另一個參考網頁：<a href="https://ihower.tw/blog/archives/4308" target="_blank" rel="external">Homebrew: 新一代 OSX 套件管理工具</a></li>
+</ul>
+<p>安裝 <a href="http://git-scm.com/" target="_blank" rel="external">Git</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install git</div></pre></td></tr></table></figure></p>
+<h3 id="Install-Node-js"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js</h3><p>根據<a href="https://hexo.io/zh-tw/docs/index.html#u5B89_u88DD_Node-js" target="_blank" rel="external">官方文件 - 安裝 Node.js</a> 所述：</p>
+<blockquote>
+<p>安裝 Node.js 的最佳方式是透過 <a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a>。 <br><br>這篇文章有解釋為何最佳：<a href="http://dreamerslab.com/blog/tw/how-to-setup-a-node-js-development-environment-on-mac-osx-lion/" target="_blank" rel="external">如何在 Mac OSX Lion 上設定 node.js 的開發環境</a></p>
+</blockquote>
+<p>這裡還是用 <a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a> 來安裝 <a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew update</div><div class="line">$ brew install node</div></pre></td></tr></table></figure></p>
+<h2 id="Build-up-Hexo"><a href="#Build-up-Hexo" class="headerlink" title="Build up Hexo"></a>Build up Hexo</h2><h3 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h3><p>將所有該裝的軟體都安裝完畢後，我們透過 npm 來安裝 hexo。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
+<h3 id="Assign-Folder-to-Hexo"><a href="#Assign-Folder-to-Hexo" class="headerlink" title="Assign Folder to Hexo"></a>Assign Folder to Hexo</h3><p>透過 npm 安裝 hexo 後，我們指定一個資料夾給 hexo。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init blog  // 這邊 blog 代表資料夾</div><div class="line">$ <span class="built_in">cd</span> blog         // 這邊 blog 代表資料夾</div><div class="line">$ npm install     // 安裝 hexo 執行時候會用到的一些必要的元件</div></pre></td></tr></table></figure></p>
+<h3 id="Testing-Hexo"><a href="#Testing-Hexo" class="headerlink" title="Testing Hexo"></a>Testing Hexo</h3><p>在指定好資料夾給 hexo 後，我們可以先測試看看到底長怎樣<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hexo server</div></pre></td></tr></table></figure><br><br></p>
+<h2 id="Few-Tips"><a href="#Few-Tips" class="headerlink" title="Few Tips"></a>Few Tips</h2><ul>
+<li>如果遇到權限不足的時候就加個<code>sudo</code>，就能解決了</li>
+<li><strong>Notice !</strong> 我們啟動的時候必須要在我們 init <folder> 的路徑下開啟 hexo 服務，不然它會找不到啟動服務的檔案。</folder></li>
+</ul>
+<h2 id="See-also"><a href="#See-also" class="headerlink" title="See also"></a>See also</h2><ul>
+<li><a href="https://hexo.io/zh-tw/docs/index.html" target="_blank" rel="external">Hexo - Official</a></li>
+<li><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a><ul>
+<li>這邊文章是以<code>Windows</code>來建置環境</li>
+</ul>
+</li>
+<li><a href="">Github Pages + Hexo 设计你的免费 blog</a><ul>
+<li>這邊文章是以<code>Ubuntu</code>來建置環境</li>
+</ul>
+</li>
+<li><a href="http://lupeng.me/2015/05/13/Hexo_Docs1.html" target="_blank" rel="external">Hexo Docs（一）- 开始准备</a><ul>
+<li>它有介紹 <strong>Hexo 目錄底下的檔案</strong></li>
+</ul>
+</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/Quick-Start/" rel="tag">#Quick Start</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/23/Hexo-Customize-Themes/" rel="prev" title="How to Build a Blog in Hexo - Customize Themes">
+                How to Build a Blog in Hexo - Customize Themes <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://s.gravatar.com/avatar/c3f761497473f7fa764e2a266073e4b5?s=80" alt="ajdfajdfl" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">ajdfajdfl</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ajdfajdfl2003" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://instagram.com/ajdfajdfl/" target="_blank">
+                  
+                    <i class="fa fa-instagram"></i> Instagram
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/115901443228227381480/about/" target="_blank">
+                  
+                    <i class="fa fa-google-plus"></i> Google+
+                  
+                </a>
+              </span>
+            
+          
+          
+            <span class="links-of-author-item">
+              <a href="http://www.plurk.com/ajdfajdfl" target="_blank">
+                <i class="icon-plurk"></i>Plurk
+              </a>
+            </span>
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preparation"><span class="nav-number">1.</span> <span class="nav-text">Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Git"><span class="nav-number">1.1.</span> <span class="nav-text">Install Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Node-js"><span class="nav-number">1.2.</span> <span class="nav-text">Install Node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-up-Hexo"><span class="nav-number">2.</span> <span class="nav-text">Build up Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Hexo"><span class="nav-number">2.1.</span> <span class="nav-text">Install Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Assign-Folder-to-Hexo"><span class="nav-number">2.2.</span> <span class="nav-text">Assign Folder to Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Testing-Hexo"><span class="nav-number">2.3.</span> <span class="nav-text">Testing Hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Few-Tips"><span class="nav-number">3.</span> <span class="nav-text">Few Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#See-also"><span class="nav-number">4.</span> <span class="nav-text">See also</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ajdfajdfl</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ajdfajdfllearnnote';
+      var disqus_identifier = '2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/';
+      var disqus_title = 'How to Build a Blog in Hexo - Quick Start';
+      var disqus_url = 'http://ajdfajdfl2003.github.io/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
