@@ -67,6 +67,7 @@ Scenario假設
 一個類別(Category)有多種商品(Product)  
 
 在 Product 的 Grid View 內需要顯示 Category 的名稱，而 Product 資料表內只有存放 Category 的 id，那我們怎麼在顯示的時候是 name，存放的時候是 id 呢？">
+<meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/04/24/devexpress-gridview-display/product.png">
 <meta property="og:updated_time" content="2016-04-24T09:20:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DevExpress - How to custom display text in GridView">
@@ -76,6 +77,7 @@ Scenario假設
 一個類別(Category)有多種商品(Product)  
 
 在 Product 的 Grid View 內需要顯示 Category 的名稱，而 Product 資料表內只有存放 Category 的 id，那我們怎麼在顯示的時候是 name，存放的時候是 id 呢？">
+<meta name="twitter:image" content="http://ajdfajdfl2003.github.io/2016/04/24/devexpress-gridview-display/product.png">
 
 
 
@@ -300,7 +302,7 @@ Scenario假設
 <blockquote>
 <p>一個類別(Category)有多種商品(Product)  </p>
 </blockquote>
-<p>在 <strong>Product</strong> 的 <a href="https://demos.devexpress.com/MVCxGridViewDemos/" target="_blank" rel="external">Grid View</a> 內需要顯示 <strong>Category</strong> 的名稱，而 <strong>Product</strong> 資料表內只有存放 <strong>Category 的 id</strong><br>，那我們怎麼在顯示的時候是 <strong><em>name</em></strong>，存放的時候是 <strong><em>id</em></strong> 呢？</p>
+<p>在 <strong>Product</strong> 的 <a href="https://demos.devexpress.com/MVCxGridViewDemos/" target="_blank" rel="external">Grid View</a> 內需要顯示 <strong>Category</strong> 的名稱，而 <strong>Product</strong> 資料表內只有存放 <strong>Category 的 id</strong><br><img src="/2016/04/24/devexpress-gridview-display/product.png" alt="product.png" title="">，那我們怎麼在顯示的時候是 <strong><em>name</em></strong>，存放的時候是 <strong><em>id</em></strong> 呢？</p>
 <a id="more"></a>
 <h1 id="起手式"><a href="#起手式" class="headerlink" title="起手式"></a>起手式</h1><h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p>那麼我們 <strong>Model</strong> 部分會是  </p>
 <h3 id="Category-cs"><a href="#Category-cs" class="headerlink" title="Category.cs"></a>Category.cs</h3><figure class="highlight csharp"><figcaption><span>Category.cs</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Category</span> &#123;</div><div class="line">  [Key]</div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> ICollection&lt;Product&gt; Products &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
