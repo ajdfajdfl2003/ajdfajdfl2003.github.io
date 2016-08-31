@@ -66,7 +66,7 @@ ISSUE在使用的過程中遇到了一個狀況：
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/twice-1.gif">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/once.gif">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/source.png">
-<meta property="og:updated_time" content="2016-07-24T08:07:05.000Z">
+<meta property="og:updated_time" content="2016-08-31T02:29:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KnockoutJS ISSUE In Devexpress - I">
 <meta name="twitter:description" content="這次拿 DevExpress - Report 來做報表檢視，使用它裡面的 Parameter Editors 做參數查詢。
@@ -336,7 +336,7 @@ ISSUE在使用的過程中遇到了一個狀況：
 <li>在 <a href="https://documentation.devexpress.com/#XtraReports/DevExpressXtraReportsWebScriptsASPxClientWebDocumentViewer_CustomizeParameterEditorstopic" target="_blank" rel="external">ClientSideEvents.CustomizeParameterEditors</a> 中，將預設的 Bind 改成我們自己的<br><figure class="highlight"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@&#123;</div><div class="line">    var viewer = Html.DevExpress().WebDocumentViewer(settings =&gt; &#123;</div><div class="line">      .</div><div class="line">      &lt;省略&gt;</div><div class="line">      .</div><div class="line">        settings.ClientSideEvents.CustomizeParameterEditors = "OnCustomizaParameters";</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;script type="text/html" id="dx-date-parameter"&gt;</div><div class="line">    &lt;div data-bind="dxDateBox: &#123;</div><div class="line">      value: value.extend(&#123; rateLimit: 500 &#125;),</div><div class="line">      closeOnValueChange: true, type: 'date',</div><div class="line">      disabled: disabled &#125;,</div><div class="line">      dxValidator: &#123; validationRules: validationRules || [] &#125;"&gt;&lt;/div&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight js"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">OnCustomizaParameters</span>(<span class="params">s, e</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (e.parameter.type === <span class="string">'System.DateTime'</span>) &#123;<span class="comment">//use a suitable condition</span></div><div class="line">        e.info.editor.header = <span class="string">'dx-date-parameter'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>將原本的「dx-date」趕成我們自己的「dx-date-parameter」。<br></li>
+<li>將原本的「dx-date」改成我們自己的「dx-date-parameter」。<br></li>
 </ul>
 </li>
 </ol>
