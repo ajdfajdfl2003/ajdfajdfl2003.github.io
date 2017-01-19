@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, ajdfajdfl, ajdfajdfl2003, devexpress, note, gridview, themes, knockout, knockoutjs,issue,twice,click,extender,throttle,deprecated,rateLimit" />
+  <meta name="keywords" content="Hexo, NexT, ajdfajdfl, ajdfajdfl2003, devexpress, note, gridview, themes, knockout, knockoutjs,issue,twice,click,extender,throttle,deprecated,rateLimit,unit,testing,selenium,firefox,exception,webdriver,environment,path,asp,mvc,authentication,owin,web.config" />
 
 
 
@@ -194,6 +194,11 @@
 
     
     
+      
+      
+
+      
+    
 
     
       
@@ -217,8 +222,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/" itemprop="url">
-                  How to Build a Blog in Hexo - Quick Start
+                <a class="post-title-link" href="/2016/02/23/Hexo-Customize-Themes/" itemprop="url">
+                  How to Build a Blog in Hexo - Customize Themes
                 </a>
               
             
@@ -228,8 +233,8 @@
         <div class="post-meta">
           <span class="post-time">
             發表於
-            <time itemprop="dateCreated" datetime="2016-01-14T23:48:05+08:00" content="2016-01-14">
-              2016-01-14
+            <time itemprop="dateCreated" datetime="2016-02-23T16:44:28+08:00" content="2016-02-23">
+              2016-02-23
             </time>
           </span>
 
@@ -238,8 +243,8 @@
               &nbsp; | &nbsp; 分類於
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
                   </a>
                 </span>
 
@@ -250,8 +255,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Hexo/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
+                  <a href="/categories/Note/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
                   </a>
                 </span>
 
@@ -266,8 +271,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/" itemprop="commentsCount"></span>
+              <a href="/2016/02/23/Hexo-Customize-Themes/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/23/Hexo-Customize-Themes/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -288,9 +293,19 @@
       
         
           <!-- ttoc -->
-<p>為什麼會想用 <a href="https://hexo.io/">Hexo</a> 呢？<br /><br>某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  <a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/">如何正确地写出单例模式</a> 的部落格，網頁的最下方(footer)看到了一些資訊<br /><br /><br><img src="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/image-footer.png" alt="image-footer.png" title=""><br /><br>點進去後才知道原來還可以用 <a href="http://markdown.tw/">Markdown</a> 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？<br /><br>然而，因為之前有在 <a href="https://www.blogger.com/home">Blogger</a> 寫文章，但寫文章的速度沒有像使用 Markdown 的快速，而且最近都是用 Markdown 在做筆記，<a href="https://atom.io/packages/ever-notedown">完成後先將筆記放在 Evernote</a>，若將來要分享在 Blog 上也可以很迅速的 Copy &amp; Past，二來可以也不用擔心格式不一樣。</p>
+<p>這篇文章主要是分享修改一些主題配置的心得。<br \><br>在網路上拿 <a href="https://hexo.io/">Hexo</a> 當作部落格的使用者，他們主題大部分都是用 <a href="http://theme-next.iissnan.com/">NexT</a>，這邊就不贅述如何套用 <a href="https://hexo.io/themes/">Themes</a>，相關套用主題的文章可以參考：</p>
+<ul>
+<li><a href="http://theme-next.iissnan.com/five-minutes-setup.html">NexT - 五分鐘快速安裝</a></li>
+<li><a href="http://papacochon.com/2015/09/03/hexo-2_set-the-theme/">Hexo博客优化
+</a><ul>
+<li>這篇的作者將主題從<code>Modernist</code>換成<code>NexT</code>，而且還說明為什麼換了！</li>
+</ul>
+</li>
+<li><a href="https://github.com/hexojs/hexo/wiki/Themes">GitHub - Themes</a></li>
+</ul>
+<p>那麼我就先修改 <strong><code>favicon</code></strong> 開始說起</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/#more" rel="contents">
+            <a class="btn" href="/2016/02/23/Hexo-Customize-Themes/#more" rel="contents">
               閱讀全文 &raquo;
             </a>
           </div>
@@ -358,21 +373,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">分類</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

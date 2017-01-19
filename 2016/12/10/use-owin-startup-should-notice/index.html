@@ -59,7 +59,7 @@
 <meta property="og:description" content="情境使用 Owin Startup Class 做到如果沒有經過驗證就會導到特定的頁面功能。 測試的時候卻遇到找不到「 /login.aspx 」的現象。">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/12/10/use-owin-startup-should-notice/error01.png">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/12/10/use-owin-startup-should-notice/error02.png">
-<meta property="og:updated_time" content="2016-12-10T08:07:27.000Z">
+<meta property="og:updated_time" content="2017-01-19T08:26:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Owin Startup 時遇上的問題">
 <meta name="twitter:description" content="情境使用 Owin Startup Class 做到如果沒有經過驗證就會導到特定的頁面功能。 測試的時候卻遇到找不到「 /login.aspx 」的現象。">
@@ -234,31 +234,7 @@
               &nbsp; | &nbsp; 分類於
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/" itemprop="url" rel="index">
-                    <span itemprop="name">ASP.NET</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/MVC/" itemprop="url" rel="index">
-                    <span itemprop="name">MVC</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/MVC/Note/" itemprop="url" rel="index">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
                     <span itemprop="name">Note</span>
                   </a>
                 </span>
@@ -270,8 +246,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/MVC/Note/Owin/" itemprop="url" rel="index">
-                    <span itemprop="name">Owin</span>
+                  <a href="/categories/Note/ASP-NET-MVC/" itemprop="url" rel="index">
+                    <span itemprop="name">ASP.NET MVC</span>
                   </a>
                 </span>
 
@@ -282,8 +258,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/MVC/Note/Owin/FormAuthentication/" itemprop="url" rel="index">
-                    <span itemprop="name">FormAuthentication</span>
+                  <a href="/categories/Note/ASP-NET-MVC/Owin/" itemprop="url" rel="index">
+                    <span itemprop="name">Owin</span>
                   </a>
                 </span>
 
@@ -325,7 +301,7 @@
 <p><br></p>
 <h1 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h1><p>先檢查「Startup.cs」、「Startup.Auth.cs」檢查是否有放「<strong>OwinStartup Attribute</strong>」</p>
 <figure class="highlight csharp"><figcaption><span>Startup.cs</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[assembly: OwinStartup(<span class="keyword">typeof</span>(Login.Startup))]</div><div class="line"><span class="keyword">namespace</span> <span class="title">Login</span> &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Startup</span> &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configuration</span>(<span class="params">IAppBuilder app</span>) </span>&#123;</div><div class="line">            ConfigureAuth(app);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight csharp"><figcaption><span>Startup.Auth.cs</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Startup</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ConfigureAuth</span>(<span class="params">IAppBuilder app</span>) </span>&#123;</div><div class="line">            app.UseCookieAuthentication(<span class="keyword">new</span> CookieAuthenticationOptions &#123;</div><div class="line">                .</div><div class="line">                &lt;省略&gt;</div><div class="line">                .</div><div class="line">                LoginPath = <span class="keyword">new</span> PathString(<span class="string">"/Account/Login"</span>),   <span class="comment">//要導到的頁面是有放的！！！</span></div><div class="line">                .</div><div class="line">                &lt;省略&gt;</div><div class="line">                .</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><figcaption><span>Startup.Auth.cs</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Startup</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ConfigureAuth</span>(<span class="params">IAppBuilder app</span>) </span>&#123;</div><div class="line">        app.UseCookieAuthentication(<span class="keyword">new</span> CookieAuthenticationOptions &#123;</div><div class="line">            .</div><div class="line">            &lt;省略&gt;</div><div class="line">            .</div><div class="line">            LoginPath = <span class="keyword">new</span> PathString(<span class="string">"/Account/Login"</span>),   <span class="comment">//要導到的頁面是有放的！！！</span></div><div class="line">            .</div><div class="line">            &lt;省略&gt;</div><div class="line">            .</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>看起來「Startup.cs」、「Startup.Auth.cs」都沒問題！ 所以到底是什麼原因讓它一直在尋找「<em><strong> /login.aspx </strong></em>」<br \=""><br>最後，在 <a href="http://www.cnblogs.com/jesse2013/p/aspnet-identity-claims-based-authentication-and-owin.html" target="_blank" rel="external">MVC5 - ASP.NET Identity登录原理 - Claims-based认证和OWIN</a> 看到一段文字。</p>
 <blockquote>
 <p>… VS还自动帮我们移除了FormsAuthenticationModule …</p>
@@ -369,13 +345,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/04/asp-mvc-invalid-operation-500/" rel="next" title="ASP.NET MVC HTTP Exception 500 ISSUE - I">
-                <i class="fa fa-chevron-left"></i> ASP.NET MVC HTTP Exception 500 ISSUE - I
+              <a href="/2016/10/04/asp-mvc-invalid-operation-500/" rel="next" title="Elmah Log 中與 InvalidOperation 找不到 Error 相遇">
+                <i class="fa fa-chevron-left"></i> Elmah Log 中與 InvalidOperation 找不到 Error 相遇
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/" rel="prev" title="使用 Selenium WebDriver Firefox 遇到找不到 Firefox">
+                使用 Selenium WebDriver Firefox 遇到找不到 Firefox <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -447,21 +427,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">分類</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="asp,mvc,custom,error,http,status,code,500,invalidoperation,invalid,operation,exception," />
+  <meta name="keywords" content="asp,mvc,custom,error,http,status,code,500,elmah,invalidoperation,invalid,operation,exception," />
 
 
 
@@ -53,14 +53,14 @@
 
 <meta name="description" content="ISSUE前陣子在玩 ELMAH ，使用後觀察發現了下面這個錯誤">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ASP.NET MVC HTTP Exception 500 ISSUE - I">
+<meta property="og:title" content="Elmah Log 中與 InvalidOperation 找不到 Error 相遇">
 <meta property="og:url" content="http://ajdfajdfl2003.github.io/2016/10/04/asp-mvc-invalid-operation-500/index.html">
 <meta property="og:site_name" content="享受學習的樂趣">
 <meta property="og:description" content="ISSUE前陣子在玩 ELMAH ，使用後觀察發現了下面這個錯誤">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/10/04/asp-mvc-invalid-operation-500/invalidoperation.png">
-<meta property="og:updated_time" content="2016-12-10T05:00:08.000Z">
+<meta property="og:updated_time" content="2017-01-19T08:31:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ASP.NET MVC HTTP Exception 500 ISSUE - I">
+<meta name="twitter:title" content="Elmah Log 中與 InvalidOperation 找不到 Error 相遇">
 <meta name="twitter:description" content="ISSUE前陣子在玩 ELMAH ，使用後觀察發現了下面這個錯誤">
 <meta name="twitter:image" content="http://ajdfajdfl2003.github.io/2016/10/04/asp-mvc-invalid-operation-500/invalidoperation.png">
 
@@ -74,7 +74,7 @@
   };
 </script>
 
-  <title> ASP.NET MVC HTTP Exception 500 ISSUE - I | 享受學習的樂趣 </title>
+  <title> Elmah Log 中與 InvalidOperation 找不到 Error 相遇 | 享受學習的樂趣 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -214,7 +214,7 @@
             
             
               
-                ASP.NET MVC HTTP Exception 500 ISSUE - I
+                Elmah Log 中與 InvalidOperation 找不到 Error 相遇
               
             
           </h1>
@@ -233,31 +233,7 @@
               &nbsp; | &nbsp; 分類於
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/" itemprop="url" rel="index">
-                    <span itemprop="name">ASP.NET</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/MVC/" itemprop="url" rel="index">
-                    <span itemprop="name">MVC</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/MVC/Note/" itemprop="url" rel="index">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
                     <span itemprop="name">Note</span>
                   </a>
                 </span>
@@ -269,7 +245,19 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ASP-NET/MVC/Note/Exception/" itemprop="url" rel="index">
+                  <a href="/categories/Note/ASP-NET-MVC/" itemprop="url" rel="index">
+                    <span itemprop="name">ASP.NET MVC</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Note/ASP-NET-MVC/Exception/" itemprop="url" rel="index">
                     <span itemprop="name">Exception</span>
                   </a>
                 </span>
@@ -344,6 +332,8 @@
           
             <a href="/tags/500/" rel="tag">#500</a>
           
+            <a href="/tags/elmah/" rel="tag">#elmah</a>
+          
             <a href="/tags/invalidoperation/" rel="tag">#invalidoperation</a>
           
             <a href="/tags/invalid/" rel="tag">#invalid</a>
@@ -359,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/" rel="next" title="KnockoutJS ISSUE In Devexpress - I">
-                <i class="fa fa-chevron-left"></i> KnockoutJS ISSUE In Devexpress - I
+              <a href="/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/" rel="next" title="DevExpress - KnockoutJS 的 日期問題">
+                <i class="fa fa-chevron-left"></i> DevExpress - KnockoutJS 的 日期問題
               </a>
             
           </div>
@@ -441,21 +431,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">分類</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -581,7 +571,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'ajdfajdfllearnnote';
       var disqus_identifier = '2016/10/04/asp-mvc-invalid-operation-500/';
-      var disqus_title = 'ASP.NET MVC HTTP Exception 500 ISSUE - I';
+      var disqus_title = 'Elmah Log 中與 InvalidOperation 找不到 Error 相遇';
       var disqus_url = 'http://ajdfajdfl2003.github.io/2016/10/04/asp-mvc-invalid-operation-500/';
 
       function run_disqus_script(disqus_script){
