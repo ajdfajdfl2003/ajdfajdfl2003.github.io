@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="exception,unit,testing,selenium,firefox,webdriver,environment,path," />
+  <meta name="keywords" content="testing,selenium,firefox,exception,webdriver,environment,path,web," />
 
 
 
@@ -54,14 +54,14 @@
 <meta name="description" content="情境在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本
 遇到的問題不僅僅遇到紅燈，測試也沒有正常運作結果 StackTrace:於 OpenQA.Selenium.Firefox.Internal.Executable..ctor(String userSpecifiedBinaryPath)   於 OpenQA.Selenium.Firefox.FirefoxBinary..">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 Selenium WebDriver Firefox 遇到找不到 Firefox">
+<meta property="og:title" content="使用 Selenium WebDriver Firefox 找不到 Firefox 的問題">
 <meta property="og:url" content="http://ajdfajdfl2003.github.io/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/index.html">
 <meta property="og:site_name" content="享受學習的樂趣">
 <meta property="og:description" content="情境在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本
 遇到的問題不僅僅遇到紅燈，測試也沒有正常運作結果 StackTrace:於 OpenQA.Selenium.Firefox.Internal.Executable..ctor(String userSpecifiedBinaryPath)   於 OpenQA.Selenium.Firefox.FirefoxBinary..">
-<meta property="og:updated_time" content="2017-01-19T08:27:42.000Z">
+<meta property="og:updated_time" content="2017-01-22T12:02:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Selenium WebDriver Firefox 遇到找不到 Firefox">
+<meta name="twitter:title" content="使用 Selenium WebDriver Firefox 找不到 Firefox 的問題">
 <meta name="twitter:description" content="情境在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本
 遇到的問題不僅僅遇到紅燈，測試也沒有正常運作結果 StackTrace:於 OpenQA.Selenium.Firefox.Internal.Executable..ctor(String userSpecifiedBinaryPath)   於 OpenQA.Selenium.Firefox.FirefoxBinary..">
 
@@ -75,7 +75,7 @@
   };
 </script>
 
-  <title> 使用 Selenium WebDriver Firefox 遇到找不到 Firefox | 享受學習的樂趣 </title>
+  <title> 使用 Selenium WebDriver Firefox 找不到 Firefox 的問題 | 享受學習的樂趣 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -215,7 +215,7 @@
             
             
               
-                使用 Selenium WebDriver Firefox 遇到找不到 Firefox
+                使用 Selenium WebDriver Firefox 找不到 Firefox 的問題
               
             
           </h1>
@@ -246,8 +246,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Note/Unit-Testing/" itemprop="url" rel="index">
-                    <span itemprop="name">Unit Testing</span>
+                  <a href="/categories/Note/Web-Testing/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Testing</span>
                   </a>
                 </span>
 
@@ -258,7 +258,7 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Note/Unit-Testing/Selenium/" itemprop="url" rel="index">
+                  <a href="/categories/Note/Web-Testing/Selenium/" itemprop="url" rel="index">
                     <span itemprop="name">Selenium</span>
                   </a>
                 </span>
@@ -297,6 +297,7 @@
         <span itemprop="articleBody"><!-- ttoc -->
 <h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><p>在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本</p>
 <h2 id="遇到的問題"><a href="#遇到的問題" class="headerlink" title="遇到的問題"></a>遇到的問題</h2><p>不僅僅遇到紅燈，測試也沒有正常運作<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">結果 StackTrace:</div><div class="line">於 OpenQA.Selenium.Firefox.Internal.Executable..ctor(String userSpecifiedBinaryPath)</div><div class="line">   於 OpenQA.Selenium.Firefox.FirefoxBinary..ctor(String pathToFirefoxBinary)</div><div class="line">   於 OpenQA.Selenium.Firefox.FirefoxDriver..ctor()</div><div class="line">   於 SeleniumTests.Loginfailed.SetupTest()</div><div class="line">結果訊息:</div><div class="line">   OpenQA.Selenium.WebDriverException:</div><div class="line">      OpenQA.Selenium.WebDriverException:</div><div class="line">         Cannot find Firefox binary in PATH or default install locations.</div><div class="line">         Make sure Firefox is installed. OS appears to be: Vista。</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>有兩種解決方法：</p>
 <ul>
 <li>第一種：指定 Firefox 主程式的路徑<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">[TestInitialize]</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetupTest</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    driver = <span class="keyword">new</span> FirefoxDriver(<span class="keyword">new</span> FirefoxBinary(<span class="string">@"C:\Program Files\Mozilla Firefox\firefox.exe"</span>), <span class="literal">null</span>);</div><div class="line">    baseURL = <span class="string">"http://localhost:29021/"</span>;</div><div class="line">    verificationErrors = <span class="keyword">new</span> StringBuilder();</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
@@ -318,21 +319,21 @@
       
         <div class="post-tags">
           
-            <a href="/tags/exception/" rel="tag">#exception</a>
-          
-            <a href="/tags/unit/" rel="tag">#unit</a>
-          
             <a href="/tags/testing/" rel="tag">#testing</a>
           
             <a href="/tags/selenium/" rel="tag">#selenium</a>
           
             <a href="/tags/firefox/" rel="tag">#firefox</a>
           
+            <a href="/tags/exception/" rel="tag">#exception</a>
+          
             <a href="/tags/webdriver/" rel="tag">#webdriver</a>
           
             <a href="/tags/environment/" rel="tag">#environment</a>
           
             <a href="/tags/path/" rel="tag">#path</a>
+          
+            <a href="/tags/web/" rel="tag">#web</a>
           
         </div>
       
@@ -348,6 +349,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/22/IEDriverWithNoSuchWindowException/" rel="prev" title="用 IEDriver 噴出 NoSuchWindowException">
+                用 IEDriver 噴出 NoSuchWindowException <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -419,21 +424,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">分類</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -559,7 +564,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'ajdfajdfllearnnote';
       var disqus_identifier = '2017/01/19/unit-testing-selenium-with-cannotfind-firefox/';
-      var disqus_title = '使用 Selenium WebDriver Firefox 遇到找不到 Firefox';
+      var disqus_title = '使用 Selenium WebDriver Firefox 找不到 Firefox 的問題';
       var disqus_url = 'http://ajdfajdfl2003.github.io/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/';
 
       function run_disqus_script(disqus_script){

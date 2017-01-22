@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, ajdfajdfl, ajdfajdfl2003, devexpress, note, gridview, themes, knockout, knockoutjs,issue,twice,click,extender,throttle,deprecated,rateLimit,unit,testing,selenium,firefox,exception,webdriver,environment,path,asp,mvc,authentication,owin,web.config" />
+  <meta name="keywords" content="Hexo, NexT, ajdfajdfl, ajdfajdfl2003, devexpress, note, gridview, themes, knockout, knockoutjs,issue,twice,click,extender,throttle,deprecated,rateLimit,web,testing,selenium,firefox,exception,webdriver,environment,path,asp,mvc,authentication,owin,web.config,iedriver,no,such,window,security" />
 
 
 
@@ -194,6 +194,156 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/22/IEDriverWithNoSuchWindowException/" itemprop="url">
+                  用 IEDriver 噴出 NoSuchWindowException
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            發表於
+            <time itemprop="dateCreated" datetime="2017-01-22T19:54:02+08:00" content="2017-01-22">
+              2017-01-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分類於
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Note/Web-Testing/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Testing</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Note/Web-Testing/FluentAutomation/" itemprop="url" rel="index">
+                    <span itemprop="name">FluentAutomation</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Note/Web-Testing/FluentAutomation/Selenium/" itemprop="url" rel="index">
+                    <span itemprop="name">Selenium</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2017/01/22/IEDriverWithNoSuchWindowException/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/22/IEDriverWithNoSuchWindowException/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <!-- ttoc -->
+<h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><p>在測試專案中執行測試，希望用開啟 IE 來執行測試的腳本</p>
+<h2 id="遇到的問題"><a href="#遇到的問題" class="headerlink" title="遇到的問題"></a>遇到的問題</h2><p>遇到紅燈，看一下錯誤訊息：<br><img src="/2017/01/22/IEDriverWithNoSuchWindowException/exception.png" alt="exception.png" title=""> <br /><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/22/IEDriverWithNoSuchWindowException/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -218,7 +368,7 @@
               
                 
                 <a class="post-title-link" href="/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/" itemprop="url">
-                  使用 Selenium WebDriver Firefox 遇到找不到 Firefox
+                  使用 Selenium WebDriver Firefox 找不到 Firefox 的問題
                 </a>
               
             
@@ -250,8 +400,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Note/Unit-Testing/" itemprop="url" rel="index">
-                    <span itemprop="name">Unit Testing</span>
+                  <a href="/categories/Note/Web-Testing/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Testing</span>
                   </a>
                 </span>
 
@@ -262,7 +412,7 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Note/Unit-Testing/Selenium/" itemprop="url" rel="index">
+                  <a href="/categories/Note/Web-Testing/Selenium/" itemprop="url" rel="index">
                     <span itemprop="name">Selenium</span>
                   </a>
                 </span>
@@ -299,27 +449,14 @@
 
       
         
-          <span itemprop="articleBody">
-            
-              <!-- ttoc -->
+          <!-- ttoc -->
 <h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><p>在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本</p>
 <h2 id="遇到的問題"><a href="#遇到的問題" class="headerlink" title="遇到的問題"></a>遇到的問題</h2><p>不僅僅遇到紅燈，測試也沒有正常運作<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">結果 StackTrace:</div><div class="line">於 OpenQA.Selenium.Firefox.Internal.Executable..ctor(String userSpecifiedBinaryPath)</div><div class="line">   於 OpenQA.Selenium.Firefox.FirefoxBinary..ctor(String pathToFirefoxBinary)</div><div class="line">   於 OpenQA.Selenium.Firefox.FirefoxDriver..ctor()</div><div class="line">   於 SeleniumTests.Loginfailed.SetupTest()</div><div class="line">結果訊息:</div><div class="line">   OpenQA.Selenium.WebDriverException:</div><div class="line">      OpenQA.Selenium.WebDriverException:</div><div class="line">         Cannot find Firefox binary in PATH or default install locations.</div><div class="line">         Make sure Firefox is installed. OS appears to be: Vista。</div></pre></td></tr></table></figure></p>
-<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>有兩種解決方法：</p>
-<ul>
-<li>第一種：指定 Firefox 主程式的路徑<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">[TestInitialize]</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetupTest</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    driver = <span class="keyword">new</span> FirefoxDriver(<span class="keyword">new</span> FirefoxBinary(<span class="string">@"C:\Program Files\Mozilla Firefox\firefox.exe"</span>), <span class="literal">null</span>);</div><div class="line">    baseURL = <span class="string">"http://localhost:29021/"</span>;</div><div class="line">    verificationErrors = <span class="keyword">new</span> StringBuilder();</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
-然後再執行測試：綠燈。</li>
-<li>第二種：在系統環境變數中加入 Firefox 主程式的路徑<ol>
-<li>把 <strong><code>C:\Program Files\Mozilla Firefox</code></strong> 加入到 <strong>PATH</strong> 的<strong>系統環境變數</strong>中</li>
-<li>重開 Visual Studio 後重新執行測試：綠燈。</li>
-</ol>
-</li>
-</ul>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
-<li><a href="http://stackoverflow.com/questions/38195243/path-error-visual-studio-selenium-webdriver#comment63815867_38195243" target="_blank" rel="external">PATH error visual studio Selenium WebDriver</a></li>
-</ul>
-
-            
-          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -726,127 +863,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/24/devexpress-gridview-display/" itemprop="url">
-                  DevExpress - 在 GridView 中自訂顯示文字
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            發表於
-            <time itemprop="dateCreated" datetime="2016-04-24T15:37:26+08:00" content="2016-04-24">
-              2016-04-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分類於
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Note/DevExpress/" itemprop="url" rel="index">
-                    <span itemprop="name">DevExpress</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/04/24/devexpress-gridview-display/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/24/devexpress-gridview-display/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <!-- ttoc -->
-<p>分享一些最近使用 <a href="https://www.devexpress.com">DevExpress</a> 元件中的幾個用法。</p>
-<h1 id="Scenario"><a href="#Scenario" class="headerlink" title="Scenario"></a>Scenario</h1><p>假設</p>
-<blockquote>
-<p>一個類別(Category)有多種商品(Product)</p>
-</blockquote>
-<p>在 <strong>Product</strong> 的 <a href="https://demos.devexpress.com/MVCxGridViewDemos/">Grid View</a> 內需要顯示 <strong>Category</strong> 的名稱，而 <strong>Product</strong> 資料表內只有存放 <strong>Category 的 id</strong><br><img src="/2016/04/24/devexpress-gridview-display/product.png" alt="product.png" title="">，那我們怎麼在顯示的時候是 <strong><em>name</em></strong>，存放的時候是 <strong><em>id</em></strong> 呢？</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/24/devexpress-gridview-display/#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -893,21 +909,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">分類</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
