@@ -1,8 +1,14 @@
 <!doctype html>
-<html class="theme-next   use-motion ">
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -21,18 +27,45 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="web,testing,selenium,exception,firefox,webdriver,environment,path," />
@@ -46,7 +79,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -61,7 +94,7 @@
 <meta property="og:site_name" content="享受學習的樂趣">
 <meta property="og:description" content="情境在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本
 遇到的問題不僅僅遇到紅燈，測試也沒有正常運作結果 StackTrace:於 OpenQA.Selenium.Firefox.Internal.Executable..ctor(String userSpecifiedBinaryPath)   於 OpenQA.Selenium.Firefox.FirefoxBinary..">
-<meta property="og:updated_time" content="2017-01-22T12:02:20.000Z">
+<meta property="og:updated_time" content="2017-01-23T00:51:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Selenium WebDriver Firefox 找不到 Firefox 的問題">
 <meta name="twitter:description" content="情境在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本
@@ -69,28 +102,41 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post',
-    motion: true
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://ajdfajdfl2003.github.io/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/"/>
+
+
+
+
 
   <title> 使用 Selenium WebDriver Firefox 找不到 Firefox 的問題 | 享受學習的樂趣 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -98,11 +144,20 @@
 
 
 
-  <div class="container one-column page-post-detail">
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
+      <div class="header-inner"><div class="site-meta custom-logo">
   
 
   <div class="custom-logo-site-title">
@@ -112,7 +167,9 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle"></p>
+    
+      <p class="site-subtitle"></p>
+    
 </div>
 
 <div class="site-nav-toggle">
@@ -127,13 +184,13 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首頁
           </a>
@@ -143,7 +200,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分類
           </a>
@@ -153,7 +210,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             關於
           </a>
@@ -163,7 +220,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             歸檔
           </a>
@@ -173,7 +230,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             標籤
           </a>
@@ -181,25 +238,26 @@
       
 
       
-      
     </ul>
   
 
   
 </nav>
 
+
+
  </div>
     </header>
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
-  
   
 
   
@@ -207,6 +265,20 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://ajdfajdfl2003.github.io/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="ajdfajdfl">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://s.gravatar.com/avatar/c3f761497473f7fa764e2a266073e4b5?s=80">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="享受學習的樂趣">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="享受學習的樂趣" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -225,17 +297,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            發表於
-            <time itemprop="dateCreated" datetime="2017-01-19T15:31:22+08:00" content="2017-01-19">
-              2017-01-19
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-19T15:31:22+08:00">
+                2017-01-19
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分類於
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
                     <span itemprop="name">Note</span>
                   </a>
@@ -245,9 +336,8 @@
                 
                   ， 
                 
-
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/Web-Testing/" itemprop="url" rel="index">
                     <span itemprop="name">Web Testing</span>
                   </a>
@@ -257,9 +347,8 @@
                 
                   ， 
                 
-
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/Web-Testing/Selenium/" itemprop="url" rel="index">
                     <span itemprop="name">Selenium</span>
                   </a>
@@ -267,7 +356,6 @@
 
                 
                 
-
               
             </span>
           
@@ -275,12 +363,22 @@
           
             
               <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/19/unit-testing-selenium-with-cannotfind-firefox/" itemprop="commentsCount"></span>
-              </a>
-            </span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/19/unit-testing-selenium-with-cannotfind-firefox/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
+          
+
+          
+
+          
+          
+
           
 
           
@@ -290,17 +388,17 @@
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><!-- ttoc -->
+        <!-- ttoc -->
 <h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><p>在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本</p>
-<h2 id="遇到的問題"><a href="#遇到的問題" class="headerlink" title="遇到的問題"></a>遇到的問題</h2><p>不僅僅遇到紅燈，測試也沒有正常運作<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">結果 StackTrace:</div><div class="line">於 OpenQA.Selenium.Firefox.Internal.Executable..ctor(String userSpecifiedBinaryPath)</div><div class="line">   於 OpenQA.Selenium.Firefox.FirefoxBinary..ctor(String pathToFirefoxBinary)</div><div class="line">   於 OpenQA.Selenium.Firefox.FirefoxDriver..ctor()</div><div class="line">   於 SeleniumTests.Loginfailed.SetupTest()</div><div class="line">結果訊息:</div><div class="line">   OpenQA.Selenium.WebDriverException:</div><div class="line">      OpenQA.Selenium.WebDriverException:</div><div class="line">         Cannot find Firefox binary in PATH or default install locations.</div><div class="line">         Make sure Firefox is installed. OS appears to be: Vista。</div></pre></td></tr></table></figure></p>
+<h1 id="遇到的問題"><a href="#遇到的問題" class="headerlink" title="遇到的問題"></a>遇到的問題</h1><p>不僅僅遇到紅燈，測試也沒有正常運作<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">結果 StackTrace:</div><div class="line">於 OpenQA.Selenium.Firefox.Internal.Executable..ctor(String userSpecifiedBinaryPath)</div><div class="line">   於 OpenQA.Selenium.Firefox.FirefoxBinary..ctor(String pathToFirefoxBinary)</div><div class="line">   於 OpenQA.Selenium.Firefox.FirefoxDriver..ctor()</div><div class="line">   於 SeleniumTests.Loginfailed.SetupTest()</div><div class="line">結果訊息:</div><div class="line">   OpenQA.Selenium.WebDriverException:</div><div class="line">      OpenQA.Selenium.WebDriverException:</div><div class="line">         Cannot find Firefox binary in PATH or default install locations.</div><div class="line">         Make sure Firefox is installed. OS appears to be: Vista。</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>有兩種解決方法：</p>
+<h1 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h1><p>有兩種解決方法：</p>
 <ul>
 <li>第一種：指定 Firefox 主程式的路徑<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">[TestInitialize]</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetupTest</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    driver = <span class="keyword">new</span> FirefoxDriver(<span class="keyword">new</span> FirefoxBinary(<span class="string">@"C:\Program Files\Mozilla Firefox\firefox.exe"</span>), <span class="literal">null</span>);</div><div class="line">    baseURL = <span class="string">"http://localhost:29021/"</span>;</div><div class="line">    verificationErrors = <span class="keyword">new</span> StringBuilder();</div><div class="line">&#125;</div><div class="line">  </div></pre></td></tr></table></figure>
 然後再執行測試：綠燈。</li>
@@ -313,29 +411,44 @@
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
 <li><a href="http://stackoverflow.com/questions/38195243/path-error-visual-studio-selenium-webdriver#comment63815867_38195243" target="_blank" rel="external">PATH error visual studio Selenium WebDriver</a></li>
 </ul>
-</span>
+
       
     </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/web/" rel="tag">#web</a>
+            <a href="/tags/web/" rel="tag"># web</a>
           
-            <a href="/tags/testing/" rel="tag">#testing</a>
+            <a href="/tags/testing/" rel="tag"># testing</a>
           
-            <a href="/tags/selenium/" rel="tag">#selenium</a>
+            <a href="/tags/selenium/" rel="tag"># selenium</a>
           
-            <a href="/tags/exception/" rel="tag">#exception</a>
+            <a href="/tags/exception/" rel="tag"># exception</a>
           
-            <a href="/tags/firefox/" rel="tag">#firefox</a>
+            <a href="/tags/firefox/" rel="tag"># firefox</a>
           
-            <a href="/tags/webdriver/" rel="tag">#webdriver</a>
+            <a href="/tags/webdriver/" rel="tag"># webdriver</a>
           
-            <a href="/tags/environment/" rel="tag">#environment</a>
+            <a href="/tags/environment/" rel="tag"># environment</a>
           
-            <a href="/tags/path/" rel="tag">#path</a>
+            <a href="/tags/path/" rel="tag"># path</a>
           
         </div>
       
@@ -349,6 +462,8 @@
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -372,26 +487,27 @@
     </div>
   </div>
 
+          
+          </div>
+          
 
-        </div>
 
-        
-
-
-        
+          
   <div class="comments" id="comments">
     
       <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
 
 
-      </div>
-
-      
+        </div>
         
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -417,33 +533,42 @@
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://s.gravatar.com/avatar/c3f761497473f7fa764e2a266073e4b5?s=80" alt="ajdfajdfl" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="http://s.gravatar.com/avatar/c3f761497473f7fa764e2a266073e4b5?s=80"
+               alt="ajdfajdfl" />
           <p class="site-author-name" itemprop="name">ajdfajdfl</p>
+          <p class="site-description motion-element" itemprop="description"></p>
         </div>
-        <p class="site-description motion-element" itemprop="description"></p>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">8</span>
-              <span class="site-state-item-name">文章</span>
-            </a>
-          </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">分類</span>
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">文章</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">44</span>
-              <span class="site-state-item-name">標籤</span>
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分類</span>
               </a>
-          </div>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
 
         </nav>
 
@@ -460,26 +585,29 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/ajdfajdfl2003" target="_blank">
+                <a href="https://github.com/ajdfajdfl2003" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-github"></i> GitHub
+                    <i class="fa fa-fw fa-github"></i>
                   
+                  GitHub
                 </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://instagram.com/ajdfajdfl/" target="_blank">
+                <a href="https://instagram.com/ajdfajdfl/" target="_blank" title="Instagram">
                   
-                    <i class="fa fa-instagram"></i> Instagram
+                    <i class="fa fa-fw fa-instagram"></i>
                   
+                  Instagram
                 </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://plus.google.com/115901443228227381480/about/" target="_blank">
+                <a href="https://plus.google.com/115901443228227381480/about/" target="_blank" title="Google+">
                   
-                    <i class="fa fa-google-plus"></i> Google+
+                    <i class="fa fa-fw fa-google-plus"></i>
                   
+                  Google+
                 </a>
               </span>
             
@@ -496,36 +624,38 @@
         
         
 
-        <div class="links-of-author motion-element">
-          
-        </div>
+        
+        
+
+        
+
 
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
           <div class="post-toc">
+
             
               
             
+
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#情境"><span class="nav-number">1.</span> <span class="nav-text">情境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的問題"><span class="nav-number">1.1.</span> <span class="nav-text">遇到的問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解決"><span class="nav-number">1.2.</span> <span class="nav-text">解決</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#情境"><span class="nav-number">1.</span> <span class="nav-text">情境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的問題"><span class="nav-number">2.</span> <span class="nav-text">遇到的問題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解決"><span class="nav-number">3.</span> <span class="nav-text">解決</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
+
           </div>
         </section>
+      <!--/noindex-->
       
 
     </div>
   </aside>
 
 
-      
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
@@ -535,48 +665,121 @@
   &copy;  2016 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ajdfajdfl</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
 </div>
 
 <div class="theme-info">
   主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
 
+        
 
+        
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
 
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
   
-    
-    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
 
   
 
     <script type="text/javascript">
       var disqus_shortname = 'ajdfajdfllearnnote';
       var disqus_identifier = '2017/01/19/unit-testing-selenium-with-cannotfind-firefox/';
-      var disqus_title = '使用 Selenium WebDriver Firefox 找不到 Firefox 的問題';
-      var disqus_url = 'http://ajdfajdfl2003.github.io/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/';
 
-      function run_disqus_script(disqus_script){
+      var disqus_title = "使用 Selenium WebDriver Firefox 找不到 Firefox 的問題";
+
+
+      function run_disqus_script(disqus_script) {
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
@@ -585,200 +788,38 @@
       }
 
       run_disqus_script('count.js');
+
       
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
         run_disqus_script('embed.js');
       
+
     </script>
   
 
 
-  
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
-
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    motionMiddleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-      if (CONFIG.sidebar === 'post') {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          displaySidebar();
-        }
-      }
-    };
-  });
-</script>
 
 
 
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+
+
 
   
   
 
   
+
   
+
+  
+
+  
+
 
 </body>
 </html>
