@@ -73,11 +73,11 @@
   </entry>
   
   <entry>
-    <title>使用 Selenium WebDriver Firefox 找不到 Firefox 的問題</title>
+    <title>用 Selenium WebDriver Firefox 找不到 Firefox 的問題</title>
     <link href="http://ajdfajdfl2003.github.io/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/"/>
     <id>http://ajdfajdfl2003.github.io/2017/01/19/unit-testing-selenium-with-cannotfind-firefox/</id>
     <published>2017-01-19T07:31:22.000Z</published>
-    <updated>2017-01-23T00:51:18.000Z</updated>
+    <updated>2017-01-23T01:08:13.000Z</updated>
     
     <content type="html"><![CDATA[<!-- ttoc -->
 <h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><p>在測試專案中執行測試，希望用開啟 Firefox 來執行測試的腳本</p>
