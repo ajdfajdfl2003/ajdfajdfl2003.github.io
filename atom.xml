@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ajdfajdfl2003.github.io/"/>
-  <updated>2017-05-01T13:36:08.000Z</updated>
+  <updated>2017-05-07T14:27:33.000Z</updated>
   <id>http://ajdfajdfl2003.github.io/</id>
   
   <author>
@@ -14,6 +14,95 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lambda Expression 的學習筆記</title>
+    <link href="http://ajdfajdfl2003.github.io/2017/05/07/LambdaExpressionLearningNote/"/>
+    <id>http://ajdfajdfl2003.github.io/2017/05/07/LambdaExpressionLearningNote/</id>
+    <published>2017-05-07T14:19:58.000Z</published>
+    <updated>2017-05-07T14:27:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Lambda-Expression"><a href="#Lambda-Expression" class="headerlink" title="Lambda Expression"></a>Lambda Expression</h1><blockquote>
+<p>上課筆記：<a href="https://www.udemy.com/csharp-advanced/learn/v4/" target="_blank" rel="external">C# Advanced Topics: Take Your C＃ Skills to the Next Level</a></p>
+</blockquote>
+<ul>
+<li>It is an anonymous method （匿名函式）.<ul>
+<li>No access modifier</li>
+<li>No name</li>
+<li>No return statement</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="情境一：經驗值加倍"><a href="#情境一：經驗值加倍" class="headerlink" title="情境一：經驗值加倍"></a>情境一：經驗值加倍</h2><h3 id="Normal-case"><a href="#Normal-case" class="headerlink" title="Normal case"></a>Normal case</h3><p>現在我們有一個 劍士，再開啟經驗值加倍後，可以獲得多少經驗值</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Warrior</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> _exp;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Exp</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> <span class="keyword">this</span>._exp; &#125;</div><div class="line">        <span class="keyword">set</span> &#123; <span class="keyword">this</span>._exp += <span class="keyword">value</span>; &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">Program</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">var</span> character = <span class="keyword">new</span> Warrior();</div><div class="line"></div><div class="line">        <span class="keyword">var</span> rewardExp = <span class="number">100</span>;</div><div class="line">        character.Exp = DoubleExp(rewardExp);</div><div class="line">        Console.WriteLine(</div><div class="line">            <span class="string">$@"獲得 100 經驗值後，目前角色有<span class="subst">&#123;character.Exp&#125;</span>。"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">DoubleExp</span>(<span class="params"><span class="keyword">int</span> exp</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> exp * <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Lambda-expression"><a href="#Lambda-expression" class="headerlink" title="Lambda expression"></a>Lambda expression</h3><p>那我們可以怎麼用 Lambda 來表示？ 在 <a href="https://docs.microsoft.com/zh-tw/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions" target="_blank" rel="external">MSDN</a> 中有提到：</p>
+<blockquote>
+<p>「若要建立 Lambda 運算式，請在 Lambda 運算子 =&gt; 的左邊指定輸入參數 (如果有的話)，並將運算式或陳述式區塊放在另一邊。」</p>
+</blockquote>
+<p>白話一點，就是「 args =&gt; expression 」，課程中有說明你可以這樣念「 args goes to expression」。</p>
+<p>那我們該怎麼使用這個 Lambda expression ？ <strong>我們搭配 delegate 來完成情境</strong></p>
+<ul>
+<li>Func<ul>
+<li>輸入參數可以從 無參數 到 十六個參數</li>
+<li>return value</li>
+</ul>
+</li>
+<li>Action<ul>
+<li>輸入參數可以從 無參數 到 十六個參數</li>
+<li>return void</li>
+</ul>
+</li>
+</ul>
+<p>那麼我們在這個情境中，我們需要的是 <strong>Func</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">Program</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">var</span> character = <span class="keyword">new</span> Warrior();</div><div class="line"></div><div class="line">        <span class="keyword">var</span> rewardExp = <span class="number">100</span>;</div><div class="line"></div><div class="line">        <span class="comment">//character.Exp = DoubleExp(rewardExp);</span></div><div class="line">        Func&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; doubleExp = exp =&gt; exp * <span class="number">2</span>;</div><div class="line">        character.Exp = doubleExp(rewardExp);</div><div class="line"></div><div class="line">        Console.WriteLine(</div><div class="line">            <span class="string">$@"獲得 100 經驗值後，目前角色有<span class="subst">&#123;character.Exp&#125;</span>。"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>透過 <a href="https://www.jetbrains.com/resharper/" target="_blank" rel="external">ReSharper</a> 我們可以將多餘的方法移除。<br><strong><u>（方法名稱反灰，代表它是 Unused 的）</u></strong></p>
+<p>那如果是沒有參數的話，就這樣表示就好：<strong><u>（）＝&gt; expression</u></strong></p>
+<p>那多個參數，就是：<strong><u>（x, y）＝&gt; expression</u></strong></p>
+<h2 id="情境二：在包包找物品"><a href="#情境二：在包包找物品" class="headerlink" title="情境二：在包包找物品"></a>情境二：在包包找物品</h2><p>現在我們有一個 劍士，包包內有一堆東西，我要找出物品的稀有度是 3 的物品，準備要把它們賣掉。</p>
+<h3 id="Normal-case-1"><a href="#Normal-case-1" class="headerlink" title="Normal case"></a>Normal case</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">Program</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">var</span> character = <span class="keyword">new</span> Warrior();</div><div class="line"></div><div class="line">        <span class="keyword">var</span> findTooCommonItem =</div><div class="line">          character.Backpack.FindAll(IsRarityLessThenFour);</div><div class="line">        Console.WriteLine();</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> findTooCommonItem)</div><div class="line">        &#123;</div><div class="line">            Console.WriteLine(</div><div class="line">                <span class="string">$@"名稱：<span class="subst">&#123;item.Name&#125;</span>，稀有度：<span class="subst">&#123;item.Rarity&#125;</span>"</span>);</div><div class="line">            Console.WriteLine(<span class="string">""</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">IsRarityLessThenFour</span>(<span class="params">Item item</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> item.Rarity &lt; <span class="number">4</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我們看一下 <a href="https://msdn.microsoft.com/zh-tw/library/x0b5b5bc(v=vs.110" target="_blank" rel="external">List<t>.Find 方法 (Predicate<t>) from MSDN</t></t></a>.aspx) 中的說明：</p>
+<ul>
+<li>Predicate of T 它其實是 delegate method，這個 method 會判斷 List of T 中的 element 是否有符合條件的，如果是，就回傳該 element。</li>
+<li>而在 List of T 的 Find method 中，它會找到第一個符合條件的 element。</li>
+</ul>
+<p>ok！ 了解了什麼是 Predicate 之後，那我們還可以怎麼修改，讓它變成 Lambda expression ～</p>
+<h3 id="Lambda-expression-1"><a href="#Lambda-expression-1" class="headerlink" title="Lambda expression"></a>Lambda expression</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">Program</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">var</span> character = <span class="keyword">new</span> Warrior();</div><div class="line"></div><div class="line">        <span class="comment">// 我們可以這樣解讀：我要在 character 的 背包裡面，</span></div><div class="line">        <span class="comment">// 找尋所有 「物品」的稀有度 是在 4 以下的。</span></div><div class="line">        <span class="keyword">var</span> findTooCommonItem =</div><div class="line">          character.Backpack.FindAll(item =&gt; item.Rarity &lt; <span class="number">4</span>);</div><div class="line"></div><div class="line">        Console.WriteLine();</div><div class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> findTooCommonItem)</div><div class="line">        &#123;</div><div class="line">            Console.WriteLine(</div><div class="line">                <span class="string">$@"名稱：<span class="subst">&#123;item.Name&#125;</span>，稀有度：<span class="subst">&#123;item.Rarity&#125;</span>"</span>);</div><div class="line">            Console.WriteLine(<span class="string">""</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看，精簡了許多。</p>
+<h2 id="See-also"><a href="#See-also" class="headerlink" title="See also"></a>See also</h2><ul>
+<li><a href="https://docs.microsoft.com/zh-tw/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions" target="_blank" rel="external">Lambda 運算式 (C# 程式設計手冊) from MSDN</a></li>
+<li><a href="http://blog.darkthread.net/post-2008-06-13-lambda-expression.aspx" target="_blank" rel="external">C# 3.0 極簡風 - Lambda Expression from 黑暗執行緒</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Lambda-Expression&quot;&gt;&lt;a href=&quot;#Lambda-Expression&quot; class=&quot;headerlink&quot; title=&quot;Lambda Expression&quot;&gt;&lt;/a&gt;Lambda Expression&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;上課筆記：&lt;a href=&quot;https://www.udemy.com/csharp-advanced/learn/v4/&quot;&gt;C# Advanced Topics: Take Your C＃ Skills to the Next Level&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;It is an anonymous method （匿名函式）.&lt;ul&gt;
+&lt;li&gt;No access modifier&lt;/li&gt;
+&lt;li&gt;No name&lt;/li&gt;
+&lt;li&gt;No return statement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Note" scheme="http://ajdfajdfl2003.github.io/categories/Note/"/>
+    
+      <category term="C＃" scheme="http://ajdfajdfl2003.github.io/categories/Note/C%EF%BC%83/"/>
+    
+    
+      <category term="note" scheme="http://ajdfajdfl2003.github.io/tags/note/"/>
+    
+      <category term="c#" scheme="http://ajdfajdfl2003.github.io/tags/c/"/>
+    
+      <category term="lambdaexpression" scheme="http://ajdfajdfl2003.github.io/tags/lambdaexpression/"/>
+    
+  </entry>
   
   <entry>
     <title>Delegates 的學習筆記</title>
