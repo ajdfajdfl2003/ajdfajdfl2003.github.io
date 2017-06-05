@@ -101,7 +101,7 @@ ISSUE在使用的過程中遇到了一個狀況：
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/twice-1.gif">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/once.gif">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/source.png">
-<meta property="og:updated_time" content="2017-01-19T08:33:35.000Z">
+<meta property="og:updated_time" content="2017-06-05T03:30:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DevExpress - KnockoutJS 的 日期問題">
 <meta name="twitter:description" content="這次拿 DevExpress - Report 來做報表檢視，使用它裡面的 Parameter Editors 做參數查詢。
@@ -178,7 +178,7 @@ ISSUE在使用的過程中遇到了一個狀況：
     </a>
   </div>
     
-      <p class="site-subtitle"></p>
+      <h1 class="site-subtitle" itemprop="description"></h1>
     
 </div>
 
@@ -295,14 +295,14 @@ ISSUE在使用的過程中遇到了一個狀況：
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
             
             
               
                 DevExpress - KnockoutJS 的 日期問題
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -433,8 +433,8 @@ ISSUE在使用的過程中遇到了一個狀況：
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>解決方法有二：</p>
 <ol>
 <li>把 <a href="http://knockoutjs.com/downloads/index.html" target="_blank" rel="external">knockout.js</a> 版本換成 3.1.0 版本</li>
-<li>在 <a href="https://documentation.devexpress.com/#XtraReports/DevExpressXtraReportsWebScriptsASPxClientWebDocumentViewer_CustomizeParameterEditorstopic" target="_blank" rel="external">ClientSideEvents.CustomizeParameterEditors</a> 中，將預設的 Bind 改成我們自己的<br><figure class="highlight"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@&#123;</div><div class="line">    var viewer = Html.DevExpress().WebDocumentViewer(settings =&gt; &#123;</div><div class="line">      .</div><div class="line">      &lt;省略&gt;</div><div class="line">      .</div><div class="line">        settings.ClientSideEvents.CustomizeParameterEditors = "OnCustomizaParameters";</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;script type="text/html" id="dx-date-parameter"&gt;</div><div class="line">    &lt;div data-bind="dxDateBox: &#123;</div><div class="line">      value: value.extend(&#123; rateLimit: 500 &#125;),</div><div class="line">      closeOnValueChange: true, type: 'date',</div><div class="line">      disabled: disabled &#125;,</div><div class="line">      dxValidator: &#123; validationRules: validationRules || [] &#125;"&gt;&lt;/div&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight js"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">OnCustomizaParameters</span>(<span class="params">s, e</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (e.parameter.type === <span class="string">'System.DateTime'</span>) &#123;<span class="comment">//use a suitable condition</span></div><div class="line">        e.info.editor.header = <span class="string">'dx-date-parameter'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>在 <a href="https://documentation.devexpress.com/#XtraReports/DevExpressXtraReportsWebScriptsASPxClientWebDocumentViewer_CustomizeParameterEditorstopic" target="_blank" rel="external">ClientSideEvents.CustomizeParameterEditors</a> 中，將預設的 Bind 改成我們自己的<br><figure class="highlight csharp"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@&#123;</div><div class="line">    <span class="keyword">var</span> viewer = Html.DevExpress().WebDocumentViewer(settings =&gt; &#123;</div><div class="line">      .</div><div class="line">      &lt;省略&gt;</div><div class="line">      .</div><div class="line">        settings.ClientSideEvents.CustomizeParameterEditors = <span class="string">"OnCustomizaParameters"</span>;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span> <span class="attr">id</span>=<span class="string">"dx-date-parameter"</span>&gt;</span><span class="xml"></span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-bind</span>=<span class="string">"dxDateBox: &#123;</span></span></div><div class="line">      value: value.extend(&#123; rateLimit: 500 &#125;),</div><div class="line">      closeOnValueChange: true, type: 'date',</div><div class="line">      disabled: disabled &#125;,</div><div class="line">      dxValidator: &#123; validationRules: validationRules || [] &#125;"&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">  function OnCustomizaParameters(s, e) &#123;</div><div class="line">      if (e.parameter.type === 'System.DateTime') &#123;//use a suitable condition</div><div class="line">          e.info.editor.header = 'dx-date-parameter';</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <ul>
 <li>將原本的「dx-date」改成我們自己的「dx-date-parameter」。<br></li>
 </ul>
@@ -580,7 +580,7 @@ ISSUE在使用的過程中遇到了一個狀況：
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -589,7 +589,7 @@ ISSUE在使用的過程中遇到了一個狀況：
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分類</span>
               </a>
             </div>
@@ -598,7 +598,7 @@ ISSUE在使用的過程中遇到了一個狀況：
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
