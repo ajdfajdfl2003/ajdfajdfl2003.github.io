@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ajdfajdfl2003.github.io/"/>
-  <updated>2017-06-05T06:03:05.000Z</updated>
+  <updated>2017-06-10T05:11:06.000Z</updated>
   <id>http://ajdfajdfl2003.github.io/</id>
   
   <author>
@@ -14,6 +14,131 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>不專業自製延長線</title>
+    <link href="http://ajdfajdfl2003.github.io/2017/06/10/DIY-Extension-Cord/"/>
+    <id>http://ajdfajdfl2003.github.io/2017/06/10/DIY-Extension-Cord/</id>
+    <published>2017-06-10T05:02:52.000Z</published>
+    <updated>2017-06-10T05:11:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>因為出自好奇，嘗試自製延長線<br>而本文目前只會提到製作延長線的過程，其餘相關專業知識暫不會提到。</p>
+<a id="more"></a>
+<h2 id="事前準備"><a href="#事前準備" class="headerlink" title="事前準備"></a>事前準備</h2><ul>
+<li><p>插頭 x1</p>
+<ul>
+<li><img src="/2017/06/10/DIY-Extension-Cord/IMG_4079.jpg" alt="IMG_4079.jpg" title="">
+</li>
+</ul>
+</li>
+<li><p>電木插座（四孔）x1</p>
+<ul>
+<li><img src="/2017/06/10/DIY-Extension-Cord/IMG_4082.jpg" alt="IMG_4082.jpg" title="">
+</li>
+</ul>
+</li>
+<li><p>大山的白扁線 1.6mm（試做的關係，先用一米的線）</p>
+<ul>
+<li><img src="/2017/06/10/DIY-Extension-Cord/IMG_4083.jpg" alt="IMG_4083.jpg" title=""></li>
+<li>註記：其實還不是很清楚什麼時候需要用 <strong>單芯線</strong> 還是 <strong>絞線</strong> …</li>
+</ul>
+</li>
+<li>R型端子 R2-3<ul>
+<li><img src="/2017/06/10/DIY-Extension-Cord/IMG_4086.jpg" alt="IMG_4086.jpg" title=""></li>
+<li><a href="http://rico0123tw.blogspot.tw/2013/04/blog-post_21.html?m=1" target="_blank" rel="external">如何判讀請參考</a></li>
+</ul>
+</li>
+<li>螺絲起子 以及 端子壓著鉗<ul>
+<li><img src="/2017/06/10/DIY-Extension-Cord/IMG_4084.jpg" alt="IMG_4084.jpg" title=""></li>
+</ul>
+</li>
+<li>脫皮鉗<ul>
+<li><img src="/2017/06/10/DIY-Extension-Cord/IMG_4107.jpg" alt="IMG_4107.jpg" title=""></li>
+<li>起初沒有使用脫皮鉗，在製作完插座端後才去購買。</li>
+</ul>
+</li>
+</ul>
+<h2 id="製作過程"><a href="#製作過程" class="headerlink" title="製作過程"></a>製作過程</h2><h3 id="插座端的部份"><a href="#插座端的部份" class="headerlink" title="插座端的部份"></a>插座端的部份</h3><hr>
+<p><strong>事後補充</strong></p>
+<ul>
+<li>做完插座端後，感想是不應該急著剝線</li>
+<li>應該先用剪刀將最外層皮剪開</li>
+<li>然後分開兩條線單芯線，放進插座取適當的長度後再剝皮</li>
+<li>後面文章會提到<ul>
+<li>因為是扁線的緣故，如果沒有先將長度取好，在放進插座內後，會很難將扁線彎曲</li>
+<li><u><strong>因此是不是一開始就不應該用扁線，而是使用較為柔軟的絞線？</strong></u></li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>一開始先大概估算要剝線的長度</li>
+<li><p>然後剝線的部份起初是使用美工刀和斜口鉗兩者並用，結果….</p>
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4087.jpg" alt="IMG_4087.jpg" title="">
+<p>結果不是很好，技術問題…加上力道沒控制好，很容易傷到導體<br>然後外觀也很難看…</p>
+</li>
+<li><p>先用端子壓著鉗扣住絕緣端子，然後將線放進端子內，並壓下去（有點壓網路線的感覺）</p>
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4088.jpg" alt="IMG_4088.jpg" title="">
+</li>
+<li><p>壓好後的結果</p>
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4089.jpg" alt="IMG_4089.jpg" title="">
+</li>
+<li><p>再來將端子扣在螺絲並鎖緊</p>
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4090.jpg" alt="IMG_4090.jpg" title="">
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4092.jpg" alt="IMG_4092.jpg" title="">
+<p>一開始沒有先取好適當長度並彎曲，以致於這個步驟卡卡的</p>
+</li>
+<li><p>插座端完成品</p>
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4093.jpg" alt="IMG_4093.jpg" title="">
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4094.jpg" alt="IMG_4094.jpg" title="">
+</li>
+</ul>
+<h3 id="插頭端的部份"><a href="#插頭端的部份" class="headerlink" title="插頭端的部份"></a>插頭端的部份</h3><p>這部份只有幾點做一下補充，在前面因為剝皮技術不夠，跑去買了剝皮鉗，實用結果確實很方便。</p>
+<ul>
+<li><p>量好端子的深度</p>
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4101.jpg" alt="IMG_4101.jpg" title="">
+</li>
+<li><p>開始剝皮</p>
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4104.jpg" alt="IMG_4104.jpg" title="">
+</li>
+<li><p>結果</p>
+<img src="/2017/06/10/DIY-Extension-Cord/IMG_4105.jpg" alt="IMG_4105.jpg" title="">
+</li>
+</ul>
+<h3 id="最終成品"><a href="#最終成品" class="headerlink" title="最終成品"></a>最終成品</h3><img src="/2017/06/10/DIY-Extension-Cord/IMG_4106.jpg" alt="IMG_4106.jpg" title="">
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
+<li>需替換掉扁線。<ul>
+<li>太硬，接頭的地方很難處理。</li>
+</ul>
+</li>
+<li>真心覺得不懂，然後不放心的話，就去買一條現成的延長線比較實在。</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="http://rico0123tw.blogspot.tw/2013/04/blog-post_21.html?m=1" target="_blank" rel="external">材料製作篇[陸續補完&amp;增加]</a></li>
+<li><a href="https://kkplay3c.net/diy-socket/" target="_blank" rel="external">電線不夠長，怎麼辦？自己 DIY 延長「插座」200元有找自製延長線！</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;因為出自好奇，嘗試自製延長線&lt;br&gt;而本文目前只會提到製作延長線的過程，其餘相關專業知識暫不會提到。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Note" scheme="http://ajdfajdfl2003.github.io/categories/Note/"/>
+    
+      <category term="DIY" scheme="http://ajdfajdfl2003.github.io/categories/Note/DIY/"/>
+    
+    
+      <category term="note" scheme="http://ajdfajdfl2003.github.io/tags/note/"/>
+    
+      <category term="diy" scheme="http://ajdfajdfl2003.github.io/tags/diy/"/>
+    
+      <category term="extension" scheme="http://ajdfajdfl2003.github.io/tags/extension/"/>
+    
+      <category term="cord" scheme="http://ajdfajdfl2003.github.io/tags/cord/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker 常用指令</title>
