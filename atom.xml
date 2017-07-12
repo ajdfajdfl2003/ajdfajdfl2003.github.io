@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ajdfajdfl2003.github.io/"/>
-  <updated>2017-06-10T05:11:06.000Z</updated>
+  <updated>2017-07-12T14:14:38.000Z</updated>
   <id>http://ajdfajdfl2003.github.io/</id>
   
   <author>
@@ -14,6 +14,108 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows Server 2016 卡在登入或是關機的階段</title>
+    <link href="http://ajdfajdfl2003.github.io/2017/07/12/WindowsClusterStuckInLogin/"/>
+    <id>http://ajdfajdfl2003.github.io/2017/07/12/WindowsClusterStuckInLogin/</id>
+    <published>2017-07-12T13:54:14.000Z</published>
+    <updated>2017-07-12T14:14:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>時間發生點：2017 年 四月底五月初之間</li>
+<li>OS：Windows Server 2016 Datacenter</li>
+<li>發生事件：<ul>
+<li>叢集節點出現 Event Id 1146 RHS程序已終止</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="經過"><a href="#經過" class="headerlink" title="經過"></a>經過</h2><p>起初，以為是叢集方面的設定有誤，以致於發生這樣的錯誤<br>0<br>透過微軟工程師的協助</p>
+<p>蒐集了相關 Log：</p>
+<ul>
+<li><strong>Cluster log</strong><ul>
+<li>使用 Powershell 指令產生所有節點的 cluster log</li>
+<li><strong>Get-ClusterLog</strong> <u><em>[-destination]</em></u> <u><em>[file location]</em></u></li>
+</ul>
+</li>
+<li><strong>Event log</strong><ul>
+<li>蒐集所有節點的 Event Log。</li>
+<li>儲存位置 : <strong>C:\Windows\System32\winevt\Logs</strong></li>
+</ul>
+</li>
+<li><strong>ClusterDiagnosticInfo</strong><ul>
+<li>使用 Powershell 指令產生所有節點的 ClusterDiagnosticInfo</li>
+<li><strong>Get-ClusterDiagnosticInfo</strong> <u><em>[-WriteToPath]</em></u> <u><em>[FileLocation]</em></u></li>
+</ul>
+</li>
+<li><p><strong>Memory Dump</strong></p>
+<ul>
+<li><p><strong>Memory Dump 設定</strong></p>
+<ul>
+<li><p>CrashDumpEnabled</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\CrashControl</div><div class="line">  Name：CrashDumpEnabled</div><div class="line">  Data Type：REG_DWORD</div><div class="line">  Data value：1</div></pre></td></tr></table></figure>
+</li>
+<li><p>CrashOnCtrlScroll</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdhid\Parameters</div><div class="line">  Name：CrashOnCtrlScroll</div><div class="line">  Data Type：REG_DWORD</div><div class="line">  Data value：1</div></pre></td></tr></table></figure>
+</li>
+<li><p>After setting memory dump, <u>restart computer</u></p>
+</li>
+</ul>
+</li>
+<li><strong>在問題發生時手動產生 Dump</strong><ul>
+<li>重現問題，手動產生dump，將鍵盤右邊的 Ctrl 鍵按住不放、連續按 ScrollLock 鍵兩次。成功的話您將看到藍底白字當機畫面。</li>
+<li>檔案將產生於%SystemRoot%\MEMORY.DMP</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h2><p>經微軟工程師從現有資料檢視到問題來自於</p>
+<p><u><strong>iSCSI initiator(cluster node) 持續向 storage 建立連線，但不明原因出現連線失敗的狀況，而這些 iSCSI thread 並未被 OS 清除，導致最後出現 server hang。</strong></u></p>
+<p>此問題已被微軟產品組判定為 bug，目前正針對此問題進行修正中。</p>
+<p>自我檢視的部份，也確認是因為 iSCSI initiator 上有嘗試跟不存在的 iSCSI target 做連線，最後將那些清除後，問題解決！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;時間發生點：2017 年 四月底五月初之間&lt;/li&gt;
+&lt;li&gt;OS：Windows Server 2016 Datacenter&lt;/li&gt;
+&lt;li&gt;發生事件：&lt;ul&gt;
+&lt;li&gt;叢集節點出現 Event Id 1146 RHS程序已終止&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Note" scheme="http://ajdfajdfl2003.github.io/categories/Note/"/>
+    
+      <category term="Windows" scheme="http://ajdfajdfl2003.github.io/categories/Note/Windows/"/>
+    
+      <category term="Server" scheme="http://ajdfajdfl2003.github.io/categories/Note/Windows/Server/"/>
+    
+      <category term="2016" scheme="http://ajdfajdfl2003.github.io/categories/Note/Windows/Server/2016/"/>
+    
+      <category term="iSCSI initiator" scheme="http://ajdfajdfl2003.github.io/categories/Note/Windows/Server/2016/iSCSI-initiator/"/>
+    
+    
+      <category term="note" scheme="http://ajdfajdfl2003.github.io/tags/note/"/>
+    
+      <category term="windows" scheme="http://ajdfajdfl2003.github.io/tags/windows/"/>
+    
+      <category term="server" scheme="http://ajdfajdfl2003.github.io/tags/server/"/>
+    
+      <category term="2016" scheme="http://ajdfajdfl2003.github.io/tags/2016/"/>
+    
+      <category term="stuck" scheme="http://ajdfajdfl2003.github.io/tags/stuck/"/>
+    
+      <category term="iscsi" scheme="http://ajdfajdfl2003.github.io/tags/iscsi/"/>
+    
+      <category term="initiator" scheme="http://ajdfajdfl2003.github.io/tags/initiator/"/>
+    
+  </entry>
   
   <entry>
     <title>不專業自製延長線</title>
