@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ajdfajdfl2003.github.io/"/>
-  <updated>2017-07-15T03:44:22.000Z</updated>
+  <updated>2018-03-19T15:49:56.007Z</updated>
   <id>http://ajdfajdfl2003.github.io/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mocking Instance Methods In Java 上課筆記</title>
+    <link href="http://ajdfajdfl2003.github.io/2018/03/19/MockingInstanceMethodsInJava/"/>
+    <id>http://ajdfajdfl2003.github.io/2018/03/19/MockingInstanceMethodsInJava/</id>
+    <published>2018-03-19T15:45:28.000Z</published>
+    <updated>2018-03-19T15:49:56.007Z</updated>
+    
+    <content type="html"><![CDATA[<p>上課的筆記：<a href="https://www.udemy.com/advanced-junit-testing-with-powermock-and-powermockito/learn/v4/overview" target="_blank" rel="external">Advanced JUnit testing with PowerMock and PowerMockito</a></p>
+<p>這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。</p>
+<a id="more"></a>
+<h2 id="Without-PowerMockito"><a href="#Without-PowerMockito" class="headerlink" title="Without PowerMockito"></a>Without PowerMockito</h2><p>一般來說，如果沒有使用任何的 Mocking Framework，那麼就會需要使用 <strong>繼承</strong> 的方式來做到 mock 物件的這件事情。</p>
+<p>以下範例是沒有使用 Mocking Framework</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartCart_Should_Ok_When_Engine_Ok</span><span class="params">()</span> </span>&#123;</div><div class="line">    EngineMock engine = <span class="keyword">new</span> EngineMock();</div><div class="line">    engine.setReturnValue(Engine.STARTED_OK);</div><div class="line">    Car car = <span class="keyword">new</span> Car(engine);</div><div class="line">    assertTrue(car.start());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EngineMock</span> <span class="keyword">extends</span> <span class="title">Engine</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setReturnValue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        code = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> code;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用物件導向的優點：<strong>繼承</strong>，將方法用複寫的方式，在測試端做一個 Stub 並繼承 Production Code 的 Class 並複寫該方法，用 DI 的概念將相依的物件（例如： Engine）注入到假的 Class。</p>
+<h2 id="Using-PowerMockito"><a href="#Using-PowerMockito" class="headerlink" title="Using PowerMockito"></a>Using PowerMockito</h2><p>使用 <a href="http://powermock.github.io/" target="_blank" rel="external">PowerMockito</a> 來改寫上面範例並不用繼承的方式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartCar_Should_Ok_When_Engine_Ok_UsingPowerMock</span><span class="params">()</span> </span>&#123;</div><div class="line">    Engine engine = PowerMockito.mock(Engine.class);</div><div class="line">    PowerMockito.when(engine.start()).thenReturn(Engine.STARTED_OK);</div><div class="line">    Car car = <span class="keyword">new</span> Car(engine);</div><div class="line"></div><div class="line">    <span class="keyword">boolean</span> actual = car.start();</div><div class="line"></div><div class="line">    assertTrue(actual);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>這樣是不是精簡許多！！！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上課的筆記：&lt;a href=&quot;https://www.udemy.com/advanced-junit-testing-with-powermock-and-powermockito/learn/v4/overview&quot;&gt;Advanced JUnit testing with PowerMock and PowerMockito&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Note" scheme="http://ajdfajdfl2003.github.io/categories/Note/"/>
+    
+      <category term="Java" scheme="http://ajdfajdfl2003.github.io/categories/Note/Java/"/>
+    
+    
+      <category term="note" scheme="http://ajdfajdfl2003.github.io/tags/note/"/>
+    
+      <category term="java" scheme="http://ajdfajdfl2003.github.io/tags/java/"/>
+    
+      <category term="mock" scheme="http://ajdfajdfl2003.github.io/tags/mock/"/>
+    
+      <category term="powermock" scheme="http://ajdfajdfl2003.github.io/tags/powermock/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows Server 2016 卡在登入或是關機的階段</title>
@@ -756,11 +797,11 @@
     
       <category term="exception" scheme="http://ajdfajdfl2003.github.io/tags/exception/"/>
     
+      <category term="custom" scheme="http://ajdfajdfl2003.github.io/tags/custom/"/>
+    
       <category term="asp" scheme="http://ajdfajdfl2003.github.io/tags/asp/"/>
     
       <category term="mvc" scheme="http://ajdfajdfl2003.github.io/tags/mvc/"/>
-    
-      <category term="custom" scheme="http://ajdfajdfl2003.github.io/tags/custom/"/>
     
       <category term="error" scheme="http://ajdfajdfl2003.github.io/tags/error/"/>
     
@@ -926,9 +967,9 @@
     
       <category term="devexpress" scheme="http://ajdfajdfl2003.github.io/tags/devexpress/"/>
     
-      <category term="custom" scheme="http://ajdfajdfl2003.github.io/tags/custom/"/>
-    
       <category term="gridview" scheme="http://ajdfajdfl2003.github.io/tags/gridview/"/>
+    
+      <category term="custom" scheme="http://ajdfajdfl2003.github.io/tags/custom/"/>
     
       <category term="display" scheme="http://ajdfajdfl2003.github.io/tags/display/"/>
     
