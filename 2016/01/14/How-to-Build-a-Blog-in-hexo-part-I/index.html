@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="為什麼會想用 Hexo 呢？某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  如何正确地写出单例模式 的部落格，網頁的最下方(footer)看到了一些資訊點進去後才知道原來還可以用 Markdown 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？然而，因為之前有在 Blogger 寫文章，但寫文章的速度沒有像使用 Mar">
+<meta name="keywords" content="hexo,Quick Start">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Build a Blog in Hexo - Quick Start">
 <meta property="og:url" content="http://ajdfajdfl2003.github.io/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/index.html">
 <meta property="og:site_name" content="享受學習的樂趣">
 <meta property="og:description" content="為什麼會想用 Hexo 呢？某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  如何正确地写出单例模式 的部落格，網頁的最下方(footer)看到了一些資訊點進去後才知道原來還可以用 Markdown 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？然而，因為之前有在 Blogger 寫文章，但寫文章的速度沒有像使用 Mar">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/image-footer.png">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/test_hexo.png">
 <meta property="og:updated_time" content="2017-01-19T08:27:14.000Z">
@@ -393,35 +395,35 @@
 
       
         <!-- ttoc -->
-<p>為什麼會想用 <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a> 呢？<br><br>某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  <a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="external">如何正确地写出单例模式</a> 的部落格，網頁的最下方(footer)看到了一些資訊<br><br><br><img src="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/image-footer.png" alt="image-footer.png" title=""><br><br>點進去後才知道原來還可以用 <a href="http://markdown.tw/" target="_blank" rel="external">Markdown</a> 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？<br><br>然而，因為之前有在 <a href="https://www.blogger.com/home" target="_blank" rel="external">Blogger</a> 寫文章，但寫文章的速度沒有像使用 Markdown 的快速，而且最近都是用 Markdown 在做筆記，<a href="https://atom.io/packages/ever-notedown" target="_blank" rel="external">完成後先將筆記放在 Evernote</a>，若將來要分享在 Blog 上也可以很迅速的 Copy &amp; Past，二來可以也不用擔心格式不一樣。</p>
+<p>為什麼會想用 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 呢？<br><br>某天在查有關 Java 的 Singleton 的資料，看到了這個篇文章 -  <a href="http://wuchong.me/blog/2014/08/28/how-to-correctly-write-singleton-pattern/" target="_blank" rel="noopener">如何正确地写出单例模式</a> 的部落格，網頁的最下方(footer)看到了一些資訊<br><br><br><img src="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/image-footer.png"><br><br>點進去後才知道原來還可以用 <a href="http://markdown.tw/" target="_blank" rel="noopener">Markdown</a> 來寫 Blog，事後回想，都可以用 Markdown 寫書、筆記，那用來寫文章又有何不可呢？<br><br>然而，因為之前有在 <a href="https://www.blogger.com/home" target="_blank" rel="noopener">Blogger</a> 寫文章，但寫文章的速度沒有像使用 Markdown 的快速，而且最近都是用 Markdown 在做筆記，<a href="https://atom.io/packages/ever-notedown" target="_blank" rel="noopener">完成後先將筆記放在 Evernote</a>，若將來要分享在 Blog 上也可以很迅速的 Copy &amp; Past，二來可以也不用擔心格式不一樣。</p>
 <a id="more"></a>
 <h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><blockquote>
 <p><strong>Notice!</strong> This article is for <code>Mac OS X</code> and <code>Hexo 3.x</code>.</p>
 </blockquote>
-<h3 id="Install-Git"><a href="#Install-Git" class="headerlink" title="Install Git"></a>Install Git</h3><p>根據<a href="https://hexo.io/zh-tw/docs/index.html#u5B89_u88DD_Git" target="_blank" rel="external">官方文件 - 安裝 Git</a> 所述：</p>
+<h3 id="Install-Git"><a href="#Install-Git" class="headerlink" title="Install Git"></a>Install Git</h3><p>根據<a href="https://hexo.io/zh-tw/docs/index.html#u5B89_u88DD_Git" target="_blank" rel="noopener">官方文件 - 安裝 Git</a> 所述：</p>
 <blockquote>
-<p>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="external">Homebrew</a>, <a href="http://www.macports.org/" target="_blank" rel="external">MacPorts</a> 或 <a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="external">安裝程式</a> 安裝。</p>
+<p>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">Homebrew</a>, <a href="http://www.macports.org/" target="_blank" rel="noopener">MacPorts</a> 或 <a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">安裝程式</a> 安裝。</p>
 </blockquote>
 <ul>
-<li>我是習慣用 <a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a> 來安裝套件</li>
-<li>另一個參考網頁：<a href="https://ihower.tw/blog/archives/4308" target="_blank" rel="external">Homebrew: 新一代 OSX 套件管理工具</a></li>
+<li>我是習慣用 <a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a> 來安裝套件</li>
+<li>另一個參考網頁：<a href="https://ihower.tw/blog/archives/4308" target="_blank" rel="noopener">Homebrew: 新一代 OSX 套件管理工具</a></li>
 </ul>
-<p>安裝 <a href="http://git-scm.com/" target="_blank" rel="external">Git</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install git</div></pre></td></tr></table></figure></p>
-<h3 id="Install-Node-js"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js</h3><p>根據<a href="https://hexo.io/zh-tw/docs/index.html#u5B89_u88DD_Node-js" target="_blank" rel="external">官方文件 - 安裝 Node.js</a> 所述：</p>
+<p>安裝 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install git</span><br></pre></td></tr></table></figure></p>
+<h3 id="Install-Node-js"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js</h3><p>根據<a href="https://hexo.io/zh-tw/docs/index.html#u5B89_u88DD_Node-js" target="_blank" rel="noopener">官方文件 - 安裝 Node.js</a> 所述：</p>
 <blockquote>
-<p>安裝 Node.js 的最佳方式是透過 <a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a>。 <br><br>這篇文章有解釋為何最佳：<a href="http://dreamerslab.com/blog/tw/how-to-setup-a-node-js-development-environment-on-mac-osx-lion/" target="_blank" rel="external">如何在 Mac OSX Lion 上設定 node.js 的開發環境</a></p>
+<p>安裝 Node.js 的最佳方式是透過 <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a>。 <br><br>這篇文章有解釋為何最佳：<a href="http://dreamerslab.com/blog/tw/how-to-setup-a-node-js-development-environment-on-mac-osx-lion/" target="_blank" rel="noopener">如何在 Mac OSX Lion 上設定 node.js 的開發環境</a></p>
 </blockquote>
-<p>這裡還是用 <a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a> 來安裝 <a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew update</div><div class="line">$ brew install node</div></pre></td></tr></table></figure></p>
-<h2 id="Build-up-Hexo"><a href="#Build-up-Hexo" class="headerlink" title="Build up Hexo"></a>Build up Hexo</h2><h3 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h3><p>將所有該裝的軟體都安裝完畢後，我們透過 npm 來安裝 hexo。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
-<h3 id="Assign-Folder-to-Hexo"><a href="#Assign-Folder-to-Hexo" class="headerlink" title="Assign Folder to Hexo"></a>Assign Folder to Hexo</h3><p>透過 npm 安裝 hexo 後，我們指定一個資料夾給 hexo。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init blog  // 這邊 blog 代表資料夾</div><div class="line">$ <span class="built_in">cd</span> blog         // 這邊 blog 代表資料夾</div><div class="line">$ npm install     // 安裝 hexo 執行時候會用到的一些必要的元件</div></pre></td></tr></table></figure></p>
-<h3 id="Testing-Hexo"><a href="#Testing-Hexo" class="headerlink" title="Testing Hexo"></a>Testing Hexo</h3><p>在指定好資料夾給 hexo 後，我們可以先測試看看到底長怎樣<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hexo server</div></pre></td></tr></table></figure><br><img src="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/test_hexo.png" alt="test_hexo.png" title=""><br></p>
+<p>這裡還是用 <a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a> 來安裝 <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew update</span><br><span class="line">$ brew install node</span><br></pre></td></tr></table></figure></p>
+<h2 id="Build-up-Hexo"><a href="#Build-up-Hexo" class="headerlink" title="Build up Hexo"></a>Build up Hexo</h2><h3 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h3><p>將所有該裝的軟體都安裝完畢後，我們透過 npm 來安裝 hexo。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
+<h3 id="Assign-Folder-to-Hexo"><a href="#Assign-Folder-to-Hexo" class="headerlink" title="Assign Folder to Hexo"></a>Assign Folder to Hexo</h3><p>透過 npm 安裝 hexo 後，我們指定一個資料夾給 hexo。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog  // 這邊 blog 代表資料夾</span><br><span class="line">$ <span class="built_in">cd</span> blog         // 這邊 blog 代表資料夾</span><br><span class="line">$ npm install     // 安裝 hexo 執行時候會用到的一些必要的元件</span><br></pre></td></tr></table></figure></p>
+<h3 id="Testing-Hexo"><a href="#Testing-Hexo" class="headerlink" title="Testing Hexo"></a>Testing Hexo</h3><p>在指定好資料夾給 hexo 後，我們可以先測試看看到底長怎樣<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo hexo server</span><br></pre></td></tr></table></figure><br><img src="/2016/01/14/How-to-Build-a-Blog-in-hexo-part-I/test_hexo.png"><br></p>
 <h2 id="Few-Tips"><a href="#Few-Tips" class="headerlink" title="Few Tips"></a>Few Tips</h2><ul>
 <li>如果遇到權限不足的時候就加個<code>sudo</code>，就能解決了</li>
 <li><strong>Notice !</strong> 我們啟動的時候必須要在我們 init <folder> 的路徑下開啟 hexo 服務，不然它會找不到啟動服務的檔案。</folder></li>
 </ul>
 <h2 id="See-also"><a href="#See-also" class="headerlink" title="See also"></a>See also</h2><ul>
-<li><a href="https://hexo.io/zh-tw/docs/index.html" target="_blank" rel="external">Hexo - Official</a></li>
-<li><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a><ul>
+<li><a href="https://hexo.io/zh-tw/docs/index.html" target="_blank" rel="noopener">Hexo - Official</a></li>
+<li><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="noopener">使用GitHub和Hexo搭建免费静态Blog</a><ul>
 <li>這邊文章是以<code>Windows</code>來建置環境</li>
 </ul>
 </li>
@@ -429,7 +431,7 @@
 <li>這邊文章是以<code>Ubuntu</code>來建置環境</li>
 </ul>
 </li>
-<li><a href="http://lupeng.me/2015/05/13/Hexo_Docs1.html" target="_blank" rel="external">Hexo Docs（一）- 开始准备</a><ul>
+<li><a href="http://lupeng.me/2015/05/13/Hexo_Docs1.html" target="_blank" rel="noopener">Hexo Docs（一）- 开始准备</a><ul>
 <li>它有介紹 <strong>Hexo 目錄底下的檔案</strong></li>
 </ul>
 </li>
@@ -553,7 +555,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -562,7 +564,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分類</span>
               </a>
             </div>
@@ -571,7 +573,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

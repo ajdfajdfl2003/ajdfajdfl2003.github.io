@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="記錄一些會常用到的指令
-在講其他指令之前，先記錄一件事情，有什麼不懂的指令，只需要在 docker command 後面加上 --help 就會有說明可以參考。">
+<meta name="description" content="記錄一些會常用到的指令 在講其他指令之前，先記錄一件事情，有什麼不懂的指令，只需要在 docker command 後面加上 --help 就會有說明可以參考。">
+<meta name="keywords" content="note,docker,command">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 常用指令">
 <meta property="og:url" content="http://ajdfajdfl2003.github.io/2017/06/05/Docker-常用指令/index.html">
 <meta property="og:site_name" content="享受學習的樂趣">
-<meta property="og:description" content="記錄一些會常用到的指令
-在講其他指令之前，先記錄一件事情，有什麼不懂的指令，只需要在 docker command 後面加上 --help 就會有說明可以參考。">
+<meta property="og:description" content="記錄一些會常用到的指令 在講其他指令之前，先記錄一件事情，有什麼不懂的指令，只需要在 docker command 後面加上 --help 就會有說明可以參考。">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2017-06-05T06:03:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 常用指令">
-<meta name="twitter:description" content="記錄一些會常用到的指令
-在講其他指令之前，先記錄一件事情，有什麼不懂的指令，只需要在 docker command 後面加上 --help 就會有說明可以參考。">
+<meta name="twitter:description" content="記錄一些會常用到的指令 在講其他指令之前，先記錄一件事情，有什麼不懂的指令，只需要在 docker command 後面加上 --help 就會有說明可以參考。">
 
 
 
@@ -406,7 +405,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 只 show 出 top level 的 image</span></div><div class="line">docker images</div><div class="line">docker image ls</div><div class="line"></div><div class="line"><span class="comment">## show 出所有的 images</span></div><div class="line"><span class="comment">## 其中還包含了 intermediate layers 的 image</span></div><div class="line">docker images <span class="_">-a</span></div><div class="line">docker image ls <span class="_">-a</span></div><div class="line"></div><div class="line"><span class="comment">## 只列出 image 的 id</span></div><div class="line">docker images -q</div><div class="line">docker image ls -q</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 只 show 出 top level 的 image</span></span><br><span class="line">docker images</span><br><span class="line">docker image ls</span><br><span class="line"></span><br><span class="line"><span class="comment">## show 出所有的 images</span></span><br><span class="line"><span class="comment">## 其中還包含了 intermediate layers 的 image</span></span><br><span class="line">docker images -a</span><br><span class="line">docker image ls -a</span><br><span class="line"></span><br><span class="line"><span class="comment">## 只列出 image 的 id</span></span><br><span class="line">docker images -q</span><br><span class="line">docker image ls -q</span><br></pre></td></tr></table></figure>
 <h3 id="List-Containers"><a href="#List-Containers" class="headerlink" title="List Containers"></a>List Containers</h3><ul>
 <li>docker <u><strong>ps</strong></u><ul>
 <li>偏向單純觀察。</li>
@@ -418,15 +417,15 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 只顯示正在運行的 的 container</span></div><div class="line">docker ps</div><div class="line">docker image ls</div><div class="line"></div><div class="line"><span class="comment">## show 出所有的 containers</span></div><div class="line"><span class="comment">## 其中還包含了沒有運行的 container</span></div><div class="line">docker ps <span class="_">-a</span></div><div class="line">docker container ls <span class="_">-a</span></div><div class="line"></div><div class="line"><span class="comment">## 只列出 images 的 id</span></div><div class="line">docker ps -q</div><div class="line">docker container ls -q</div></pre></td></tr></table></figure>
-<h3 id="Container-的資源使用量"><a href="#Container-的資源使用量" class="headerlink" title="Container 的資源使用量"></a>Container 的資源使用量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 顯示目前所有執行中 container 的資源使用量</span></div><div class="line"><span class="comment">## 其中包含 CPU、Memeory、網路 I/O、Block I/O</span></div><div class="line">docker stats</div><div class="line"></div><div class="line"><span class="comment">## 加了 -a 參數，包含沒有在執行的 container</span></div><div class="line">docker stats <span class="_">-a</span></div><div class="line"></div><div class="line"><span class="comment">## 如果需要觀察特定的 container</span></div><div class="line">docker stats [CONTAINER ID / CONTAINER NAME]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 只顯示正在運行的 的 container</span></span><br><span class="line">docker ps</span><br><span class="line">docker image ls</span><br><span class="line"></span><br><span class="line"><span class="comment">## show 出所有的 containers</span></span><br><span class="line"><span class="comment">## 其中還包含了沒有運行的 container</span></span><br><span class="line">docker ps -a</span><br><span class="line">docker container ls -a</span><br><span class="line"></span><br><span class="line"><span class="comment">## 只列出 images 的 id</span></span><br><span class="line">docker ps -q</span><br><span class="line">docker container ls -q</span><br></pre></td></tr></table></figure>
+<h3 id="Container-的資源使用量"><a href="#Container-的資源使用量" class="headerlink" title="Container 的資源使用量"></a>Container 的資源使用量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 顯示目前所有執行中 container 的資源使用量</span></span><br><span class="line"><span class="comment">## 其中包含 CPU、Memeory、網路 I/O、Block I/O</span></span><br><span class="line">docker stats</span><br><span class="line"></span><br><span class="line"><span class="comment">## 加了 -a 參數，包含沒有在執行的 container</span></span><br><span class="line">docker stats -a</span><br><span class="line"></span><br><span class="line"><span class="comment">## 如果需要觀察特定的 container</span></span><br><span class="line">docker stats [CONTAINER ID / CONTAINER NAME]</span><br></pre></td></tr></table></figure>
 <h3 id="Logs-of-a-Container"><a href="#Logs-of-a-Container" class="headerlink" title="Logs of a Container"></a>Logs of a Container</h3><ul>
 <li>docker <u><strong>logs</strong></u><ul>
 <li>參數 <code>-f</code>：這個指令跟 <code>tail -f</code> 有等同的效果</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 持續觀察某 Container 的 Log</span></div><div class="line">docker logs <span class="_">-f</span> [CONTAINER ID / CONTAINER NAME]</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 持續觀察某 Container 的 Log</span></span><br><span class="line">docker logs -f [CONTAINER ID / CONTAINER NAME]</span><br></pre></td></tr></table></figure>
 <h2 id="管理的指令"><a href="#管理的指令" class="headerlink" title="管理的指令"></a>管理的指令</h2><h3 id="刪除-移除-相關指令"><a href="#刪除-移除-相關指令" class="headerlink" title="刪除/移除 相關指令"></a>刪除/移除 相關指令</h3><h4 id="跟-Image-相關"><a href="#跟-Image-相關" class="headerlink" title="跟 Image 相關"></a>跟 Image 相關</h4><ul>
 <li>docker <u><strong>rmi</strong></u><ul>
 <li>如果 <code>rm</code> 與 <code>rmi</code> 傻傻分不清楚，你可以這樣記： <code>rmi</code> 就是 <u><strong>R</strong></u>e<u><strong>M</strong></u>ove <u><strong>I</strong></u>mage。</li>
@@ -437,10 +436,10 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 移除 demo:latest 的 image</span></div><div class="line"><span class="comment">## 當然也可以用 Image Id</span></div><div class="line">docker rmi demo:latest</div><div class="line"></div><div class="line"><span class="comment">## 移除所有 UNTAGGED 的 image</span></div><div class="line">docker rmi $(docker images --filter <span class="string">"dangling=true"</span> -q)</div><div class="line"></div><div class="line"><span class="comment">## 移除所有開頭是 demo 的 image</span></div><div class="line">docker rmi $(docker images --filter=reference=<span class="string">'demo*'</span> -q)</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 移除 demo:latest 的 image</span></span><br><span class="line"><span class="comment">## 當然也可以用 Image Id</span></span><br><span class="line">docker rmi demo:latest</span><br><span class="line"></span><br><span class="line"><span class="comment">## 移除所有 UNTAGGED 的 image</span></span><br><span class="line">docker rmi $(docker images --filter <span class="string">"dangling=true"</span> -q)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 移除所有開頭是 demo 的 image</span></span><br><span class="line">docker rmi $(docker images --filter=reference=<span class="string">'demo*'</span> -q)</span><br></pre></td></tr></table></figure>
 <h4 id="跟-Container-相關"><a href="#跟-Container-相關" class="headerlink" title="跟 Container 相關"></a>跟 Container 相關</h4><p>先註解 Kill 跟 Stop 的差別：</p>
 <blockquote>
-<p>kill是不管容器同不同意，我直接执行kill -9，强行终止；<br>stop的话，首先给容器发送一个TERM信号，让容器做一些退出前必须的保护性、安全性操作，<br>然后让容器自动停止运行，如果在一段时间内，容器还是没有停止，再进行kill -9，强行终止。<br>– Refer to <a href="http://dockone.io/question/158" target="_blank" rel="external">http://dockone.io/question/158</a></p>
+<p>kill是不管容器同不同意，我直接执行kill -9，强行终止；<br>stop的话，首先给容器发送一个TERM信号，让容器做一些退出前必须的保护性、安全性操作，<br>然后让容器自动停止运行，如果在一段时间内，容器还是没有停止，再进行kill -9，强行终止。<br>– Refer to <a href="http://dockone.io/question/158" target="_blank" rel="noopener">http://dockone.io/question/158</a></p>
 </blockquote>
 <ul>
 <li><p>Kill v.s. Stop</p>
@@ -458,9 +457,9 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 將所有 Container 殺掉</span></div><div class="line">docker <span class="built_in">kill</span> $(docker ps -q)</div><div class="line"></div><div class="line"><span class="comment">## 將所有 Container 移除</span></div><div class="line">docker rm $(docker ps <span class="_">-a</span> -q)</div></pre></td></tr></table></figure>
-<h3 id="docker-save"><a href="#docker-save" class="headerlink" title="docker save"></a>docker save</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 將 demo:latest 的 image archive 成 demo.tar</span></div><div class="line">docker save -o <span class="string">".\demo.tar"</span> demo:latest</div></pre></td></tr></table></figure>
-<h3 id="docker-load"><a href="#docker-load" class="headerlink" title="docker load"></a>docker load</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## Load an image from a archive file</span></div><div class="line">docker load -i demo.tar</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 將所有 Container 殺掉</span></span><br><span class="line">docker <span class="built_in">kill</span> $(docker ps -q)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 將所有 Container 移除</span></span><br><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
+<h3 id="docker-save"><a href="#docker-save" class="headerlink" title="docker save"></a>docker save</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 將 demo:latest 的 image archive 成 demo.tar</span></span><br><span class="line">docker save -o <span class="string">".\demo.tar"</span> demo:latest</span><br></pre></td></tr></table></figure>
+<h3 id="docker-load"><a href="#docker-load" class="headerlink" title="docker load"></a>docker load</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Load an image from a archive file</span></span><br><span class="line">docker load -i demo.tar</span><br></pre></td></tr></table></figure>
 <h3 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h3><p>參數說明：</p>
 <ul>
 <li><code>--restart</code>：Restart policy to apply when a container exits<ul>
@@ -476,12 +475,12 @@
 <li><code>-d</code>：Publish a container’s port(s) to the host</li>
 <li><code>--name</code>： Assign a name to the container</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 我要啟動一個名稱為 demo 的 Container。</span></div><div class="line"><span class="comment">## 設定當 Docker Daemon 重啟時，demo 也要跟著重啟。</span></div><div class="line"><span class="comment">## 我要 demo 有 虛擬終端pty，然後在啟動 demo 後，demo 在背景執行就可以了。</span></div><div class="line"><span class="comment">## Container 來源是 demo:latest 這個 image</span></div><div class="line">docker run --restart=unless-stopped -idt -p 8080:80 --name demo demo:latest</div></pre></td></tr></table></figure>
-<h3 id="docker-exec"><a href="#docker-exec" class="headerlink" title="docker exec"></a>docker exec</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## Execute an interactive bash shell on a container, which is called demo.</span></div><div class="line">docker <span class="built_in">exec</span> -it demo /bin/bash</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 我要啟動一個名稱為 demo 的 Container。</span></span><br><span class="line"><span class="comment">## 設定當 Docker Daemon 重啟時，demo 也要跟著重啟。</span></span><br><span class="line"><span class="comment">## 我要 demo 有 虛擬終端pty，然後在啟動 demo 後，demo 在背景執行就可以了。</span></span><br><span class="line"><span class="comment">## Container 來源是 demo:latest 這個 image</span></span><br><span class="line">docker run --restart=unless-stopped -idt -p 8080:80 --name demo demo:latest</span><br></pre></td></tr></table></figure>
+<h3 id="docker-exec"><a href="#docker-exec" class="headerlink" title="docker exec"></a>docker exec</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Execute an interactive bash shell on a container, which is called demo.</span></span><br><span class="line">docker <span class="built_in">exec</span> -it demo /bin/bash</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://docs.docker.com/" target="_blank" rel="external">Docker Documentation</a></li>
-<li><a href="http://dockone.io/question/158" target="_blank" rel="external">docker kill 和 stop 有什么区别</a></li>
-<li><a href="https://www.centos.bz/2017/01/docker-run-restart-policy/" target="_blank" rel="external">Docker run参考(7) – Restart策略(–restart)</a></li>
+<li><a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker Documentation</a></li>
+<li><a href="http://dockone.io/question/158" target="_blank" rel="noopener">docker kill 和 stop 有什么区别</a></li>
+<li><a href="https://www.centos.bz/2017/01/docker-run-restart-policy/" target="_blank" rel="noopener">Docker run参考(7) – Restart策略(–restart)</a></li>
 </ul>
 
       
@@ -608,7 +607,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -617,7 +616,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分類</span>
               </a>
             </div>
@@ -626,7 +625,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

@@ -86,28 +86,21 @@
 
 
 
-<meta name="description" content="這次拿 DevExpress - Report 來做報表檢視，使用它裡面的 Parameter Editors 做參數查詢。
-ISSUE在使用的過程中遇到了一個狀況：
-
-當你直接修改 Text Field 後並按下 Submit 後，會發現資料沒有更新，需要再按第二次的 Submit 後，資料才會更新。">
+<meta name="description" content="這次拿 DevExpress - Report 來做報表檢視，使用它裡面的 Parameter Editors 做參數查詢。&amp;lt;br&amp;gt; ISSUE在使用的過程中遇到了一個狀況：  當你直接修改 Text Field 後並按下 Submit 後，會發現資料沒有更新，需要再按第二次的 Submit 後，資料才會更新。">
+<meta name="keywords" content="devexpress,knockout,knockoutjs,issue,twice,click,extender,throttle,deprecated,rateLimit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DevExpress - KnockoutJS 的 日期問題">
 <meta property="og:url" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/index.html">
 <meta property="og:site_name" content="享受學習的樂趣">
-<meta property="og:description" content="這次拿 DevExpress - Report 來做報表檢視，使用它裡面的 Parameter Editors 做參數查詢。
-ISSUE在使用的過程中遇到了一個狀況：
-
-當你直接修改 Text Field 後並按下 Submit 後，會發現資料沒有更新，需要再按第二次的 Submit 後，資料才會更新。">
+<meta property="og:description" content="這次拿 DevExpress - Report 來做報表檢視，使用它裡面的 Parameter Editors 做參數查詢。&amp;lt;br&amp;gt; ISSUE在使用的過程中遇到了一個狀況：  當你直接修改 Text Field 後並按下 Submit 後，會發現資料沒有更新，需要再按第二次的 Submit 後，資料才會更新。">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/twice-1.gif">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/once.gif">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/source.png">
 <meta property="og:updated_time" content="2017-06-05T03:30:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DevExpress - KnockoutJS 的 日期問題">
-<meta name="twitter:description" content="這次拿 DevExpress - Report 來做報表檢視，使用它裡面的 Parameter Editors 做參數查詢。
-ISSUE在使用的過程中遇到了一個狀況：
-
-當你直接修改 Text Field 後並按下 Submit 後，會發現資料沒有更新，需要再按第二次的 Submit 後，資料才會更新。">
+<meta name="twitter:description" content="這次拿 DevExpress - Report 來做報表檢視，使用它裡面的 Parameter Editors 做參數查詢。&amp;lt;br&amp;gt; ISSUE在使用的過程中遇到了一個狀況：  當你直接修改 Text Field 後並按下 Submit 後，會發現資料沒有更新，需要再按第二次的 Submit 後，資料才會更新。">
 <meta name="twitter:image" content="http://ajdfajdfl2003.github.io/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/twice-1.gif">
 
 
@@ -414,19 +407,19 @@ ISSUE在使用的過程中遇到了一個狀況：
 
       
         <!-- ttoc -->
-<p>這次拿 <a href="https://demos.devexpress.com/MVCxReportDemos/Overview" target="_blank" rel="external">DevExpress - Report</a> 來做報表檢視，使用它裡面的 <a href="https://documentation.devexpress.com/#XtraReports/CustomDocument10000" target="_blank" rel="external">Parameter Editors</a> 做參數查詢。<br\></br\></p>
+<p>這次拿 <a href="https://demos.devexpress.com/MVCxReportDemos/Overview" target="_blank" rel="noopener">DevExpress - Report</a> 來做報表檢視，使用它裡面的 <a href="https://documentation.devexpress.com/#XtraReports/CustomDocument10000" target="_blank" rel="noopener">Parameter Editors</a> 做參數查詢。&lt;br></p>
 <h1 id="ISSUE"><a href="#ISSUE" class="headerlink" title="ISSUE"></a>ISSUE</h1><p>在使用的過程中遇到了一個狀況：</p>
 <ul>
-<li>當你直接修改 Text Field 後並按下 Submit 後，會發現資料沒有更新，需要再按第二次的 Submit 後，資料才會更新。<br><br><img src="/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/twice-1.gif" alt="twice-1.gif" title=""><br></li>
+<li>當你直接修改 Text Field 後並按下 Submit 後，會發現資料沒有更新，需要再按第二次的 Submit 後，資料才會更新。<br><br><img src="/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/twice-1.gif"><br></li>
 </ul>
 <a id="more"></a>
-<h1 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h1><p>一開始在想是不是因為我直接修改文字的關係，所以就乖乖的一個日期一個日期選擇。<br><br><img src="/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/once.gif" alt="once.gif" title=""><br><br>發現：結果正常。<br></p>
-<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><p>看一下原始碼<br><br><img src="/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/source.png" alt="source.png" title=""><br></p>
+<h1 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h1><p>一開始在想是不是因為我直接修改文字的關係，所以就乖乖的一個日期一個日期選擇。<br><br><img src="/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/once.gif"><br><br>發現：結果正常。<br></p>
+<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><p>看一下原始碼<br><br><img src="/2016/07/23/KnockoutJS-ISSUE-In-Devexpress-I/source.png"><br></p>
 <ul>
 <li>第一個就想到會不會是「value.extend」那邊出問題。<br></li>
 </ul>
 <h2 id="Official-Document"><a href="#Official-Document" class="headerlink" title="Official Document"></a>Official Document</h2><ul>
-<li><a href="http://knockoutjs.com/documentation/throttle-extender.html" target="_blank" rel="external">官方文件說明：</a><br><strong>The “throttle” extender</strong><ul>
+<li><a href="http://knockoutjs.com/documentation/throttle-extender.html" target="_blank" rel="noopener">官方文件說明：</a><br><strong>The “throttle” extender</strong><ul>
 <li><blockquote>
 <p><em>Note: This throttle API is deprecated as of Knockout 3.1.0. Please use the rateLimit extender for similar functionality.</em><br></p>
 </blockquote>
@@ -441,9 +434,9 @@ ISSUE在使用的過程中遇到了一個狀況：
 </ul>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>解決方法有二：</p>
 <ol>
-<li>把 <a href="http://knockoutjs.com/downloads/index.html" target="_blank" rel="external">knockout.js</a> 版本換成 3.1.0 版本</li>
-<li>在 <a href="https://documentation.devexpress.com/#XtraReports/DevExpressXtraReportsWebScriptsASPxClientWebDocumentViewer_CustomizeParameterEditorstopic" target="_blank" rel="external">ClientSideEvents.CustomizeParameterEditors</a> 中，將預設的 Bind 改成我們自己的<br><figure class="highlight csharp"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@&#123;</div><div class="line">    <span class="keyword">var</span> viewer = Html.DevExpress().WebDocumentViewer(settings =&gt; &#123;</div><div class="line">      .</div><div class="line">      &lt;省略&gt;</div><div class="line">      .</div><div class="line">        settings.ClientSideEvents.CustomizeParameterEditors = <span class="string">"OnCustomizaParameters"</span>;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight html"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span> <span class="attr">id</span>=<span class="string">"dx-date-parameter"</span>&gt;</span><span class="xml"></span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-bind</span>=<span class="string">"dxDateBox: &#123;</span></span></div><div class="line">      value: value.extend(&#123; rateLimit: 500 &#125;),</div><div class="line">      closeOnValueChange: true, type: 'date',</div><div class="line">      disabled: disabled &#125;,</div><div class="line">      dxValidator: &#123; validationRules: validationRules || [] &#125;"&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">  function OnCustomizaParameters(s, e) &#123;</div><div class="line">      if (e.parameter.type === 'System.DateTime') &#123;//use a suitable condition</div><div class="line">          e.info.editor.header = 'dx-date-parameter';</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>把 <a href="http://knockoutjs.com/downloads/index.html" target="_blank" rel="noopener">knockout.js</a> 版本換成 3.1.0 版本</li>
+<li>在 <a href="https://documentation.devexpress.com/#XtraReports/DevExpressXtraReportsWebScriptsASPxClientWebDocumentViewer_CustomizeParameterEditorstopic" target="_blank" rel="noopener">ClientSideEvents.CustomizeParameterEditors</a> 中，將預設的 Bind 改成我們自己的<br><figure class="highlight csharp"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@&#123;</span><br><span class="line">    <span class="keyword">var</span> viewer = Html.DevExpress().WebDocumentViewer(settings =&gt; &#123;</span><br><span class="line">      .</span><br><span class="line">      &lt;省略&gt;</span><br><span class="line">      .</span><br><span class="line">        settings.ClientSideEvents.CustomizeParameterEditors = <span class="string">"OnCustomizaParameters"</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>Demo.cshtml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/html"</span> <span class="attr">id</span>=<span class="string">"dx-date-parameter"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;div data-bind="dxDateBox: &#123;</span></span><br><span class="line"><span class="undefined">      value: value.extend(&#123; rateLimit: 500 &#125;),</span></span><br><span class="line"><span class="undefined">      closeOnValueChange: true, type: 'date',</span></span><br><span class="line"><span class="undefined">      disabled: disabled &#125;,</span></span><br><span class="line"><span class="xml">      dxValidator: &#123; validationRules: validationRules || [] &#125;"&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  function OnCustomizaParameters(s, e) &#123;</span></span><br><span class="line"><span class="undefined">      if (e.parameter.type === 'System.DateTime') &#123;//use a suitable condition</span></span><br><span class="line"><span class="undefined">          e.info.editor.header = 'dx-date-parameter';</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>將原本的「dx-date」改成我們自己的「dx-date-parameter」。<br></li>
 </ul>
@@ -589,7 +582,7 @@ ISSUE在使用的過程中遇到了一個狀況：
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -598,7 +591,7 @@ ISSUE在使用的過程中遇到了一個狀況：
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分類</span>
               </a>
             </div>
@@ -607,7 +600,7 @@ ISSUE在使用的過程中遇到了一個狀況：
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

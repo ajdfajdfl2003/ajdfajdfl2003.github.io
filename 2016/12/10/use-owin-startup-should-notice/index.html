@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="情境使用 Owin Startup Class 做到如果沒有經過驗證就會導到特定的頁面功能。 測試的時候卻遇到找不到「 /login.aspx 」的現象。">
+<meta name="keywords" content="asp,mvc,authentication,owin,web.config">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Owin Startup 時遇上的問題">
 <meta property="og:url" content="http://ajdfajdfl2003.github.io/2016/12/10/use-owin-startup-should-notice/index.html">
 <meta property="og:site_name" content="享受學習的樂趣">
 <meta property="og:description" content="情境使用 Owin Startup Class 做到如果沒有經過驗證就會導到特定的頁面功能。 測試的時候卻遇到找不到「 /login.aspx 」的現象。">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/12/10/use-owin-startup-should-notice/error01.png">
 <meta property="og:image" content="http://ajdfajdfl2003.github.io/2016/12/10/use-owin-startup-should-notice/error02.png">
 <meta property="og:updated_time" content="2017-01-19T08:26:55.000Z">
@@ -404,30 +406,30 @@
 
       
         <!-- ttoc -->
-<h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><p>使用 <a href="https://www.asp.net/aspnet/overview/owin-and-katana/owin-startup-class-detection" target="_blank" rel="external">Owin Startup Class</a> 做到如果沒有經過驗證就會導到特定的頁面功能。 <br><br>測試的時候卻遇到找不到「<em><strong> /login.aspx </strong></em>」的現象。<br></p>
+<h1 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h1><p>使用 <a href="https://www.asp.net/aspnet/overview/owin-and-katana/owin-startup-class-detection" target="_blank" rel="noopener">Owin Startup Class</a> 做到如果沒有經過驗證就會導到特定的頁面功能。 <br><br>測試的時候卻遇到找不到「<em><strong> /login.aspx </strong></em>」的現象。<br></p>
 <a id="more"></a>
-<img src="/2016/12/10/use-owin-startup-should-notice/error01.png" alt="error01.png" title=""> <br><br><img src="/2016/12/10/use-owin-startup-should-notice/error02.png" alt="error02.png" title="">
+<img src="/2016/12/10/use-owin-startup-should-notice/error01.png"> <br><br><img src="/2016/12/10/use-owin-startup-should-notice/error02.png">
 <p><br></p>
 <h1 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h1><p>先檢查「Startup.cs」、「Startup.Auth.cs」檢查是否有放「<strong>OwinStartup Attribute</strong>」</p>
-<figure class="highlight csharp"><figcaption><span>Startup.cs</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[assembly: OwinStartup(<span class="keyword">typeof</span>(Login.Startup))]</div><div class="line"><span class="keyword">namespace</span> <span class="title">Login</span> &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Startup</span> &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configuration</span>(<span class="params">IAppBuilder app</span>) </span>&#123;</div><div class="line">            ConfigureAuth(app);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight csharp"><figcaption><span>Startup.Auth.cs</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Startup</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ConfigureAuth</span>(<span class="params">IAppBuilder app</span>) </span>&#123;</div><div class="line">        app.UseCookieAuthentication(<span class="keyword">new</span> CookieAuthenticationOptions &#123;</div><div class="line">            .</div><div class="line">            &lt;省略&gt;</div><div class="line">            .</div><div class="line">            LoginPath = <span class="keyword">new</span> PathString(<span class="string">"/Account/Login"</span>),   <span class="comment">//要導到的頁面是有放的！！！</span></div><div class="line">            .</div><div class="line">            &lt;省略&gt;</div><div class="line">            .</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>看起來「Startup.cs」、「Startup.Auth.cs」都沒問題！ 所以到底是什麼原因讓它一直在尋找「<em><strong> /login.aspx </strong></em>」<br \=""><br>最後，在 <a href="http://www.cnblogs.com/jesse2013/p/aspnet-identity-claims-based-authentication-and-owin.html" target="_blank" rel="external">MVC5 - ASP.NET Identity登录原理 - Claims-based认证和OWIN</a> 看到一段文字。</p>
+<figure class="highlight csharp"><figcaption><span>Startup.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">assembly: OwinStartup(typeof(Login.Startup))</span>]</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Login</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Startup</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configuration</span>(<span class="params">IAppBuilder app</span>) </span>&#123;</span><br><span class="line">            ConfigureAuth(app);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><figcaption><span>Startup.Auth.cs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Startup</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ConfigureAuth</span>(<span class="params">IAppBuilder app</span>) </span>&#123;</span><br><span class="line">        app.UseCookieAuthentication(<span class="keyword">new</span> CookieAuthenticationOptions &#123;</span><br><span class="line">            .</span><br><span class="line">            &lt;省略&gt;</span><br><span class="line">            .</span><br><span class="line">            LoginPath = <span class="keyword">new</span> PathString(<span class="string">"/Account/Login"</span>),   <span class="comment">//要導到的頁面是有放的！！！</span></span><br><span class="line">            .</span><br><span class="line">            &lt;省略&gt;</span><br><span class="line">            .</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看起來「Startup.cs」、「Startup.Auth.cs」都沒問題！ 所以到底是什麼原因讓它一直在尋找「<em><strong> /login.aspx </strong></em>」<br \=""><br>最後，在 <a href="http://www.cnblogs.com/jesse2013/p/aspnet-identity-claims-based-authentication-and-owin.html" target="_blank" rel="noopener">MVC5 - ASP.NET Identity登录原理 - Claims-based认证和OWIN</a> 看到一段文字。</p>
 <blockquote>
 <p>… VS还自动帮我们移除了FormsAuthenticationModule …</p>
 </blockquote>
-<p>找了一下資料，在這篇 <a href="https://www.asp.net/web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs" target="_blank" rel="external">Forms Authentication Configuration and Advanced Topics (C#)</a> 說明了：</p>
+<p>找了一下資料，在這篇 <a href="https://www.asp.net/web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs" target="_blank" rel="noopener">Forms Authentication Configuration and Advanced Topics (C#)</a> 說明了：</p>
 <blockquote>
 <p>loginUrl - The URL of the login page. The default value is login.aspx.</p>
 </blockquote>
 <p>看起來是找到原因了！</p>
-<h1 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h1><p>在 「<em><strong> Web.config </strong></em>」把「 <strong>FormsAuthenticationModule</strong> 」移掉！<br><figure class="highlight xml"><figcaption><span>Web.config</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">modules</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">remove</span> <span class="attr">name</span>=<span class="string">"FormsAuthentication"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">remove</span> <span class="attr">name</span>=<span class="string">"FormsAuthenticationModule"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">modules</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h1><p>在 「<em><strong> Web.config </strong></em>」把「 <strong>FormsAuthenticationModule</strong> 」移掉！<br><figure class="highlight xml"><figcaption><span>Web.config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">remove</span> <span class="attr">name</span>=<span class="string">"FormsAuthentication"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">remove</span> <span class="attr">name</span>=<span class="string">"FormsAuthenticationModule"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h1><ul>
-<li><a href="http://blog.darkthread.net/post-2013-12-01-about-owin.aspx" target="_blank" rel="external">開發筆記-OWIN</a></li>
-<li><a href="http://blog.darkthread.net/post-2013-12-02-add-owin-startup-class.aspx" target="_blank" rel="external">在專案新增OWIN Startup類別</a></li>
-<li><a href="https://www.asp.net/web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs" target="_blank" rel="external">Forms Authentication Configuration and Advanced Topics (C#)</a></li>
-<li><a href="https://msdn.microsoft.com/en-us/library/7t6b43z4%28v=vs.71%29.aspx?f=255&amp;MSPPError=-2147217396" target="_blank" rel="external">Using the FormsAuthenticationModule Class</a></li>
-<li><a href="https://www.asp.net/aspnet/overview/owin-and-katana/owin-startup-class-detection" target="_blank" rel="external">OWIN Startup Class Detection</a></li>
-<li><a href="http://www.cnblogs.com/jesse2013/p/aspnet-identity-claims-based-authentication-and-owin.html" target="_blank" rel="external">MVC5 - ASP.NET Identity登录原理 - Claims-based认证和OWIN</a></li>
+<li><a href="http://blog.darkthread.net/post-2013-12-01-about-owin.aspx" target="_blank" rel="noopener">開發筆記-OWIN</a></li>
+<li><a href="http://blog.darkthread.net/post-2013-12-02-add-owin-startup-class.aspx" target="_blank" rel="noopener">在專案新增OWIN Startup類別</a></li>
+<li><a href="https://www.asp.net/web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs" target="_blank" rel="noopener">Forms Authentication Configuration and Advanced Topics (C#)</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/7t6b43z4%28v=vs.71%29.aspx?f=255&amp;MSPPError=-2147217396" target="_blank" rel="noopener">Using the FormsAuthenticationModule Class</a></li>
+<li><a href="https://www.asp.net/aspnet/overview/owin-and-katana/owin-startup-class-detection" target="_blank" rel="noopener">OWIN Startup Class Detection</a></li>
+<li><a href="http://www.cnblogs.com/jesse2013/p/aspnet-identity-claims-based-authentication-and-owin.html" target="_blank" rel="noopener">MVC5 - ASP.NET Identity登录原理 - Claims-based认证和OWIN</a></li>
 </ul>
 
       
@@ -558,7 +560,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -567,7 +569,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分類</span>
               </a>
             </div>
@@ -576,7 +578,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

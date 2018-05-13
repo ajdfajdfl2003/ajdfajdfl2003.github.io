@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="上課的筆記：Advanced JUnit testing with PowerMock and PowerMockito
-這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。">
+<meta name="description" content="上課的筆記：Advanced JUnit testing with PowerMock and PowerMockito 這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。">
+<meta name="keywords" content="note,java,mock,powermock">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mocking Instance Methods In Java 上課筆記">
 <meta property="og:url" content="http://ajdfajdfl2003.github.io/2018/03/19/MockingInstanceMethodsInJava/index.html">
 <meta property="og:site_name" content="享受學習的樂趣">
-<meta property="og:description" content="上課的筆記：Advanced JUnit testing with PowerMock and PowerMockito
-這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。">
-<meta property="og:updated_time" content="2018-03-19T15:54:58.580Z">
+<meta property="og:description" content="上課的筆記：Advanced JUnit testing with PowerMock and PowerMockito 這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2018-05-13T13:23:57.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mocking Instance Methods In Java 上課筆記">
-<meta name="twitter:description" content="上課的筆記：Advanced JUnit testing with PowerMock and PowerMockito
-這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。">
+<meta name="twitter:description" content="上課的筆記：Advanced JUnit testing with PowerMock and PowerMockito 這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。">
 
 
 
@@ -392,15 +391,15 @@
       
 
       
-        <p>上課的筆記：<a href="https://www.udemy.com/advanced-junit-testing-with-powermock-and-powermockito/learn/v4/overview" target="_blank" rel="external">Advanced JUnit testing with PowerMock and PowerMockito</a></p>
+        <p>上課的筆記：<a href="https://www.udemy.com/advanced-junit-testing-with-powermock-and-powermockito/learn/v4/overview" target="_blank" rel="noopener">Advanced JUnit testing with PowerMock and PowerMockito</a></p>
 <p>這裡會讓你知道有無使用 Mocking Framework 寫法上的差異。</p>
 <a id="more"></a>
 <h2 id="Without-PowerMockito"><a href="#Without-PowerMockito" class="headerlink" title="Without PowerMockito"></a>Without PowerMockito</h2><p>一般來說，如果沒有使用任何的 Mocking Framework，那麼就會需要使用 <strong>繼承</strong> 的方式來做到 mock 物件的這件事情。</p>
 <p>以下範例是沒有使用 Mocking Framework</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartCart_Should_Ok_When_Engine_Ok</span><span class="params">()</span> </span>&#123;</div><div class="line">    EngineMock engine = <span class="keyword">new</span> EngineMock();</div><div class="line">    engine.setReturnValue(Engine.STARTED_OK);</div><div class="line">    Car car = <span class="keyword">new</span> Car(engine);</div><div class="line">    assertTrue(car.start());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EngineMock</span> <span class="keyword">extends</span> <span class="title">Engine</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setReturnValue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        code = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> code;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartCart_Should_Ok_When_Engine_Ok</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    EngineMock engine = <span class="keyword">new</span> EngineMock();</span><br><span class="line">    engine.setReturnValue(Engine.STARTED_OK);</span><br><span class="line">    Car car = <span class="keyword">new</span> Car(engine);</span><br><span class="line">    assertTrue(car.start());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EngineMock</span> <span class="keyword">extends</span> <span class="title">Engine</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> code;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setReturnValue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        code = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>用物件導向的優點：<strong>繼承</strong>，將方法用複寫的方式，在測試端做一個 Stub 並繼承 Production Code 的 Class 並複寫該方法，用 DI 的概念將相依的物件（例如： Engine）注入到假的 Class。</p>
-<h2 id="Using-PowerMockito"><a href="#Using-PowerMockito" class="headerlink" title="Using PowerMockito"></a>Using PowerMockito</h2><p>使用 <a href="http://powermock.github.io/" target="_blank" rel="external">PowerMockito</a> 來改寫上面範例並不用繼承的方式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartCar_Should_Ok_When_Engine_Ok_UsingPowerMock</span><span class="params">()</span> </span>&#123;</div><div class="line">    Engine engine = PowerMockito.mock(Engine.class);</div><div class="line">    PowerMockito.when(engine.start()).thenReturn(Engine.STARTED_OK);</div><div class="line">    Car car = <span class="keyword">new</span> Car(engine);</div><div class="line"></div><div class="line">    <span class="keyword">boolean</span> actual = car.start();</div><div class="line"></div><div class="line">    assertTrue(actual);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Using-PowerMockito"><a href="#Using-PowerMockito" class="headerlink" title="Using PowerMockito"></a>Using PowerMockito</h2><p>使用 <a href="http://powermock.github.io/" target="_blank" rel="noopener">PowerMockito</a> 來改寫上面範例並不用繼承的方式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartCar_Should_Ok_When_Engine_Ok_UsingPowerMock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Engine engine = PowerMockito.mock(Engine.class);</span><br><span class="line">    PowerMockito.when(engine.start()).thenReturn(Engine.STARTED_OK);</span><br><span class="line">    Car car = <span class="keyword">new</span> Car(engine);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">boolean</span> actual = car.start();</span><br><span class="line"></span><br><span class="line">    assertTrue(actual);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>這樣是不是精簡許多！！！</p>
 
       
@@ -449,6 +448,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/13/learning-git-with-reset/" rel="prev" title="git reset">
+                git reset <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -525,7 +528,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -534,7 +537,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分類</span>
               </a>
             </div>
@@ -543,7 +546,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
