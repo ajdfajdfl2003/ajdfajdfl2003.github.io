@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ajdfajdfl2003.github.io/"/>
-  <updated>2018-05-13T13:30:16.873Z</updated>
+  <updated>2019-05-08T16:36:13.617Z</updated>
   <id>http://ajdfajdfl2003.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CMD vs ENTRYPOINT in a Dockerfile</title>
+    <link href="http://ajdfajdfl2003.github.io/2019/05/09/2019-05-09-cmd-vs-entrypoint/"/>
+    <id>http://ajdfajdfl2003.github.io/2019/05/09/2019-05-09-cmd-vs-entrypoint/</id>
+    <published>2019-05-08T16:30:13.000Z</published>
+    <updated>2019-05-08T16:36:13.617Z</updated>
+    
+    <content type="html"><![CDATA[<p>常常忘記，很粗略的筆記一下<br>經同事說明</p><p>根據：</p><ul><li><a href="https://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile" target="_blank" rel="noopener">https://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile</a></li><li><a href="https://docs.docker.com/v17.09/engine/reference/builder/" target="_blank" rel="noopener">https://docs.docker.com/v17.09/engine/reference/builder/</a></li></ul><a id="more"></a><p><strong>CMD</strong></p><blockquote><ul><li>The CMD specifies arguments that will be fed to the ENTRYPOINT.</li><li>There can only be one CMD instruction in a Dockerfile. If you list more than one CMD then only the last CMD will take effect.</li></ul></blockquote><p><strong>ENTRYPOINT</strong></p><blockquote><ul><li>The ENTRYPOINT specifies a command that will always be executed when the container starts.</li><li>An ENTRYPOINT allows you to configure a container that will run as an executable.</li></ul></blockquote><p>應該是這樣子：</p><ul><li>一個 Dockerfile 內只能有一個 <code>CMD</code>，如果有多，生效會是最後一個 <code>CMD</code></li><li><code>CMD</code> 會被當成 <code>ENTRYPOINT</code> 參數</li><li><code>ENTRYPOINT</code> 預設是 <code>/bin/sh -c</code></li><li><code>CMD</code> 沒有預設值</li></ul><p>初步的感覺有點像<br>今天 Dockerfile 只有</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">⚡ docker build -t ajdfajdfl/<span class="built_in">test</span>-entrypoint .</span><br><span class="line">⚡ docker run --rm --name <span class="built_in">test</span> ajdfajdfl/<span class="built_in">test</span>-entrypoint ls</span><br></pre></td></tr></table></figure><p>也就是<br>預設會是這樣 <code>ENTRYPOINT</code> + <code>CMD</code>： <code>/bin/sh -c &quot;ls&quot;</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;常常忘記，很粗略的筆記一下&lt;br&gt;經同事說明&lt;/p&gt;
+&lt;p&gt;根據：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://stackoverflow.com/questions/21553353/what-is-the-difference-between-cmd-and-entrypoint-in-a-dockerfile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.docker.com/v17.09/engine/reference/builder/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://docs.docker.com/v17.09/engine/reference/builder/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Note" scheme="http://ajdfajdfl2003.github.io/categories/Note/"/>
+    
+      <category term="Docker" scheme="http://ajdfajdfl2003.github.io/categories/Note/Docker/"/>
+    
+    
+      <category term="note" scheme="http://ajdfajdfl2003.github.io/tags/note/"/>
+    
+      <category term="docker" scheme="http://ajdfajdfl2003.github.io/tags/docker/"/>
+    
+      <category term="cmd" scheme="http://ajdfajdfl2003.github.io/tags/cmd/"/>
+    
+      <category term="entrypoint" scheme="http://ajdfajdfl2003.github.io/tags/entrypoint/"/>
+    
+  </entry>
   
   <entry>
     <title>git reset</title>
